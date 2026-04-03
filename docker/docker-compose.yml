@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: amarpod
+      POSTGRES_DB: bengalstitch
     volumes:
       - pgdata:/var/lib/postgresql/data
 

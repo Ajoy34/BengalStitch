@@ -10,7 +10,7 @@ export default function SignupPage() {
         <div className="w-full max-w-md space-y-8">
           <div>
             <Link href="/" className="text-3xl font-extrabold font-[family-name:var(--font-headline)]">
-              <span className="gradient-text">AmarPOD</span>
+              <span className="gradient-text">BengalStitch</span>
             </Link>
             <h1 className="editorial-headline text-3xl font-extrabold mt-6">
               Create your store

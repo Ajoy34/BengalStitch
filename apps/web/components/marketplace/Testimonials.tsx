@@ -8,7 +8,7 @@ const TESTIMONIALS = [
     name: 'Rakib Hasan',
     role: 'Power Seller',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCSBagkS-atK37gtA9d20BF4oLJ-NfOaCtRTLwkaMPTDX2NQYEHPvS7UqSb8DTj9dWoYGcg_tFoXlcNPIt83b_MLZokEBmxhpiUgco1H-J2q_vlvEmiaXTMxSvq129up-jOZ5Fu-iiVTSFtLXrS8WLtr-HchaKMosGl_oOZYuIUvzZP7juVUH-pwIYD4-kiAqKpFf9RLbK-c-93UceRq746H9-rWz-Yn_SLWzdnKH7Whc0LFCTxEhuaxV-RXmLRJadh5GwwO4zFkg',
-    text: "AmarPOD changed everything for me. I started with zero capital, uploaded a few t-shirt designs, and within 3 months I was earning consistently. The bKash payout makes it so easy — no waiting for international transfers.",
+    text: "BengalStitch changed everything for me. I started with zero capital, uploaded a few t-shirt designs, and within 3 months I was earning consistently. The bKash payout makes it so easy — no waiting for international transfers.",
     stars: 5,
   },
   {
@@ -29,21 +29,21 @@ const TESTIMONIALS = [
     name: 'Nusrat Jahan',
     role: 'Storefront Owner',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDecIBLXJLvczGZwz1LuJokca8x8rxOYwEazbJciate3yfit4kNjgBEFZaRceVtdWhrqescAHv3-cwuVEGWt6aeWxFkvv-pSNetV4LTSezETlxn6JIr21fNwZr9xuxgAuchWMFgPcOEDR5AvPmKFXKssjPjZGN9_jF8PkrxLmLP_XR9YAuvpz5JiwFceRzLikb4nZycx6rzYq-eQoX3krT1M67KDNGKx_lFoPuzUz_81GpBR-rXqN8CyTBMhDzcuMsAGKGD8I9lXA',
-    text: "Connected my own domain to AmarPOD and now it looks like I have my own professional e-commerce site. Customers love it! The quality of the products is excellent — never had a complaint.",
+    text: "Connected my own domain to BengalStitch and now it looks like I have my own professional e-commerce site. Customers love it! The quality of the products is excellent — never had a complaint.",
     stars: 5,
   },
   {
     name: 'Imran Khan',
     role: 'CEO, PrintBD',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCXlUhUo80ya30PpexggkqYN63xOUey7rylDIP3EKdUzXBvR8n1jduDaTuiPpLqi-y3oj5bY7W3Rfl3ZuYAOIZgvZEJRG8ijVCEOzivXFnOVEgvePpm81V8uVIf3IKaSBkpxLjpQMTmDeJVR-lzOdw_Ojn03mdDaqBUjdxTd83nlUf7v7SgcxloxHtS8iGFTG6uzqOzDQWbEUyDp0pX5i2MOU4w1IsuEkZuDIzFaKf8zoKRhkBQKNPfiG0IWEsXKZLSpAPSj7x3iA',
-    text: "We moved our entire business to AmarPOD. The support team is like family — always responsive. Turnaround time is fast, and SSLCommerz integration for Bangladesh payments is seamless.",
+    text: "We moved our entire business to BengalStitch. The support team is like family — always responsive. Turnaround time is fast, and SSLCommerz integration for Bangladesh payments is seamless.",
     stars: 5,
   },
   {
     name: 'Sadia Rahman',
     role: 'Student Seller',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC3l2xve2ebMiBz4B3KqFnIcyn8duJI-ktcDufeGLjABevNqDJzuQLVFNueom8TMq8j14ytBvkHv0W6usqM9TR7ue34WktwWLG1LhytM9mH6wEiSVrP-8_qwMfjXHoCqCV8p6oAnqak1MlHmtsKQkmrbnT5dGZJWKO0u3P7OfNAF5dj7B1N5k5QnENYoCMahoGp46LpbZ7dT3yS-jLvqCz0bcV8c-MH4ifDFyvudOHsjDbXwqOp3XezGRfQ3HhsMwIHwnPaVskK2w',
-    text: "As a university student, I needed flexible income. AmarPOD lets me design during weekends and the products sell themselves. Already bought my laptop from the earnings!",
+    text: "As a university student, I needed flexible income. BengalStitch lets me design during weekends and the products sell themselves. Already bought my laptop from the earnings!",
     stars: 5,
   },
 ];

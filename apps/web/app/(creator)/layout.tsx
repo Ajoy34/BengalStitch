@@ -31,7 +31,7 @@ export default function CreatorLayout({
           href="/"
           className="text-xl font-black tracking-tighter text-primary font-[family-name:var(--font-headline)] mb-8"
         >
-          AmarPOD
+          BengalStitch
         </Link>
 
         <nav className="flex-1 space-y-1">

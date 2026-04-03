@@ -8,7 +8,7 @@ const BLOG_POSTS = [
     excerpt: 'Everything you need to know about starting your POD business in Bangladesh. From design to delivery.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCXlUhUo80ya30PpexggkqYN63xOUey7rylDIP3EKdUzXBvR8n1jduDaTuiPpLqi-y3oj5bY7W3Rfl3ZuYAOIZgvZEJRG8ijVCEOzivXFnOVEgvePpm81V8uVIf3IKaSBkpxLjpQMTmDeJVR-lzOdw_Ojn03mdDaqBUjdxTd83nlUf7v7SgcxloxHtS8iGFTG6uzqOzDQWbEUyDp0pX5i2MOU4w1IsuEkZuDIzFaKf8zoKRhkBQKNPfiG0IWEsXKZLSpAPSj7x3iA',
     category: 'Guide',
-    author: 'AmarPOD Team',
+    author: 'BengalStitch Team',
     time: 'Yesterday',
   },
   {
@@ -38,7 +38,7 @@ export function BlogPreview() {
         <div className="text-center mb-16">
           <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Learn & Grow</span>
           <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">
-            AmarPOD Makes It Easy
+            BengalStitch Makes It Easy
           </h2>
           <p className="text-gray-500 mt-3 max-w-xl mx-auto">
             Dive into our free resource library and learn the secrets to selling POD products.

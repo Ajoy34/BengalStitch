@@ -41,7 +41,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10 mb-16">
           <div className="col-span-2">
             <div className="text-2xl font-extrabold font-[family-name:var(--font-headline)] mb-4">
-              <span className="bg-gradient-to-r from-violet-400 to-rose-400 bg-clip-text text-transparent">AmarPOD</span>
+              <span className="bg-gradient-to-r from-violet-400 to-rose-400 bg-clip-text text-transparent">BengalStitch</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
               One stop shop for on-demand products. High quality selection, low risk,
@@ -104,7 +104,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-gray-800">
           <p className="text-gray-500 text-xs">
-            &copy; {new Date().getFullYear()} AmarPOD. All rights reserved.
+            &copy; {new Date().getFullYear()} BengalStitch. All rights reserved.
           </p>
           <p className="text-gray-500 text-xs">
             Made with love in Bangladesh

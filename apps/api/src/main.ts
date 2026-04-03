@@ -22,7 +22,7 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
-  console.log(`AmarPOD API running on http://localhost:${port}`);
+  console.log(`BengalStitch API running on http://localhost:${port}`);
 }
 
 bootstrap();

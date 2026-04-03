@@ -16,7 +16,7 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./*"],
-      "@amarpod/shared": ["../../packages/shared/src"]
+      "@bengalstitch/shared": ["../../packages/shared/src"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

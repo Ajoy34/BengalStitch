@@ -18,7 +18,7 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@/*": ["src/*"],
-      "@amarpod/shared": ["../../packages/shared/src"]
+      "@bengalstitch/shared": ["../../packages/shared/src"]
     }
   },
   "include": ["src/**/*"]

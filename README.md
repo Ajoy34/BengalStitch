@@ -1,4 +1,4 @@
-# AmarPOD
+# BengalStitch
 
 **Design Globally, Sell Locally** — A Bangladesh-focused print-on-demand marketplace.
 
@@ -51,7 +51,7 @@ npm run dev
 ## Project Structure
 
 ```
-amarpod/
+bengalstitch/
 ├── apps/
 │   ├── web/          # Next.js 15 frontend
 │   └── api/          # NestJS backend

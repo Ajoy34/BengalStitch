@@ -45,7 +45,7 @@ export function TrendingCreations() {
     <section className="py-24 px-6 md:px-8">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <span className="text-sm font-bold text-accent uppercase tracking-wider">Why AmarPOD</span>
+          <span className="text-sm font-bold text-accent uppercase tracking-wider">Why BengalStitch</span>
           <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold mt-4 mb-6">
             Everything You Need to{' '}
             <span className="gradient-text">Succeed</span>

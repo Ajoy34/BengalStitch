@@ -1,4 +1,4 @@
-# AmarPOD — Technical Blueprint
+# BengalStitch — Technical Blueprint
 ## Bangladesh-Focused Print-on-Demand Marketplace
 
 > **Codename:** The Luminous Nexus
@@ -39,7 +39,7 @@
 
 ## 1. Executive Summary
 
-AmarPOD is a print-on-demand SaaS marketplace built for Bangladeshi creators and global sellers. It combines:
+BengalStitch is a print-on-demand SaaS marketplace built for Bangladeshi creators and global sellers. It combines:
 
 - **Marketplace** — Buyers browse and purchase products
 - **Creator Dashboard** — Sellers manage products, earnings, stores
@@ -175,7 +175,7 @@ AmarPOD is a print-on-demand SaaS marketplace built for Bangladeshi creators and
 ## 4. Monorepo Structure
 
 ```
-amarpod/
+bengalstitch/
 ├── apps/
 │   ├── web/                          # Next.js 15 frontend
 │   │   ├── app/                      # App Router pages
@@ -1068,7 +1068,7 @@ Creator                    Frontend                   Backend                   
   │                           │   + shareable link       │                          │
   │                           │                          │                          │
   │<── Show success + link ───┤                          │                          │
-  │    amarpod.com/p/my-tee   │                          │                          │
+  │    bengalstitch.com/p/my-tee   │                          │                          │
 ```
 
 ### Purchase Flow
@@ -1667,7 +1667,7 @@ Content-Type: application/json
 {
   "id": "prod_abc123",
   "slug": "dhaka-nights-graphic-tee",
-  "shareableLink": "https://amarpod.com/p/dhaka-nights-graphic-tee",
+  "shareableLink": "https://bengalstitch.com/p/dhaka-nights-graphic-tee",
   "status": "DRAFT",
   "createdAt": "2026-04-04T10:00:00Z"
 }
@@ -1683,7 +1683,7 @@ Content-Type: application/json
 {
   "orderId": "ord_xyz789",
   "gateway": "BKASH",
-  "returnUrl": "https://amarpod.com/checkout/success"
+  "returnUrl": "https://bengalstitch.com/checkout/success"
 }
 ```
 
@@ -1720,4 +1720,4 @@ Content-Type: application/json
 
 *This blueprint is a living document. Update as decisions are made and requirements evolve.*
 
-*Generated for AmarPOD — April 2026*
+*Generated for BengalStitch — April 2026*

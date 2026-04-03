@@ -84,7 +84,7 @@ export function Header() {
             href="/"
             className="text-2xl font-extrabold tracking-tight font-[family-name:var(--font-headline)]"
           >
-            <span className="gradient-text">AmarPOD</span>
+            <span className="gradient-text">BengalStitch</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">

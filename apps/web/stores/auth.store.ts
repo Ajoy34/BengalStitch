@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { User, AuthTokens } from '@amarpod/shared';
+import type { User, AuthTokens } from '@bengalstitch/shared';
 
 interface AuthState {
   user: User | null;
@@ -35,7 +35,7 @@ export const useAuthStore = create<AuthState>()(
         })),
     }),
     {
-      name: 'amarpod-auth',
+      name: 'bengalstitch-auth',
       partialize: (state) => ({
         user: state.user,
         tokens: state.tokens,

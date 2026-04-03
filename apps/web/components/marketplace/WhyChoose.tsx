@@ -90,11 +90,11 @@ export function WhyChoose() {
         <div className="text-center mb-16">
           <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Our Advantages</span>
           <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">
-            Why Choose AmarPOD?
+            Why Choose BengalStitch?
           </h2>
           <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
             With our print-on-demand products, dependable fulfillment, industry-leading customer service,
-            and more — AmarPOD provides a clear path toward success.
+            and more — BengalStitch provides a clear path toward success.
           </p>
         </div>
 

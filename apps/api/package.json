@@ -1,5 +1,5 @@
 {
-  "name": "@amarpod/api",
+  "name": "@bengalstitch/api",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
     "db:studio": "prisma studio --schema=src/prisma/schema.prisma"
   },
   "dependencies": {
-    "@amarpod/shared": "*",
+    "@bengalstitch/shared": "*",
     "@nestjs/common": "^11.0.0",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",

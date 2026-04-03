@@ -18,15 +18,15 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'AmarPOD — Your One-Stop Print-on-Demand Platform',
-    template: '%s | AmarPOD',
+    default: 'BengalStitch — Your One-Stop Print-on-Demand Platform',
+    template: '%s | BengalStitch',
   },
   description:
     'Create, sell, and ship custom products worldwide. Zero startup costs. Bangladesh & global payments. Your own branded storefront with custom domain.',
   keywords: [
     'print on demand',
     'bangladesh',
-    'amarpod',
+    'bengalstitch',
     'custom products',
     'bkash',
     'nagad',
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://amarpod.com',
-    siteName: 'AmarPOD',
-    title: 'AmarPOD — Your One-Stop Print-on-Demand Platform',
+    url: 'https://bengalstitch.com',
+    siteName: 'BengalStitch',
+    title: 'BengalStitch — Your One-Stop Print-on-Demand Platform',
     description:
       'Create, sell, and ship custom products worldwide. Zero startup costs.',
   },

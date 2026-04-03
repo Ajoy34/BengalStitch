@@ -14,7 +14,7 @@ export function FinalCTA() {
       <div className="bg-gradient-to-br from-violet-600 via-purple-600 to-rose-600 py-24 px-6 md:px-8">
         <div className="container mx-auto max-w-4xl text-center relative z-10">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white">
-            Get Started with AmarPOD Today
+            Get Started with BengalStitch Today
           </h2>
           <p className="text-violet-100 text-lg mt-6 max-w-2xl mx-auto">
             Join thousands of creators earning from their designs.

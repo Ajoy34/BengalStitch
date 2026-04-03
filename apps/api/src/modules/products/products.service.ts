@@ -123,7 +123,7 @@ export class ProductsService {
 
     return {
       ...product,
-      shareableLink: `${process.env.FRONTEND_URL || 'https://amarpod.com'}/p/${slug}`,
+      shareableLink: `${process.env.FRONTEND_URL || 'https://bengalstitch.com'}/p/${slug}`,
     };
   }
 

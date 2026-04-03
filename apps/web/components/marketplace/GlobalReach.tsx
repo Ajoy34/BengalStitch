@@ -43,7 +43,7 @@ export function GlobalReach() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* World map visual */}
           <div className="relative bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-            <h3 className="font-bold text-gray-900 text-xl mb-6">AmarPOD Delivers International Success</h3>
+            <h3 className="font-bold text-gray-900 text-xl mb-6">BengalStitch Delivers International Success</h3>
             <p className="text-gray-500 mb-6">
               Merchants worldwide rely on us to deliver customer satisfaction globally.
             </p>

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { CartItem } from '@amarpod/shared';
+import type { CartItem } from '@bengalstitch/shared';
 
 interface CartState {
   items: CartItem[];
@@ -62,6 +62,6 @@ export const useCartStore = create<CartState>()(
       itemCount: () =>
         get().items.reduce((sum, item) => sum + item.quantity, 0),
     }),
-    { name: 'amarpod-cart' }
+    { name: 'bengalstitch-cart' }
   )
 );

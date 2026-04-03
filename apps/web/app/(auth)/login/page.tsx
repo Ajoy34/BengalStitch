@@ -8,7 +8,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md space-y-8 bg-white p-10 rounded-3xl card-shadow">
         <div className="text-center">
           <Link href="/" className="text-3xl font-extrabold font-[family-name:var(--font-headline)]">
-            <span className="gradient-text">AmarPOD</span>
+            <span className="gradient-text">BengalStitch</span>
           </Link>
           <h1 className="editorial-headline text-2xl font-bold mt-6">Welcome back</h1>
           <p className="text-on-surface-variant mt-2">Sign in to your account</p>
