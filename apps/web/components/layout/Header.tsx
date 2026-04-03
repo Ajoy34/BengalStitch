@@ -52,7 +52,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const megaRef = useRef<HTMLDivElement>(null);
-  const megaTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const megaTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     return () => {

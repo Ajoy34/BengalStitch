@@ -5,6 +5,14 @@ interface ProductPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export function generateStaticParams() {
+  return [
+    { slug: 'sample-tshirt' },
+    { slug: 'premium-hoodie' },
+    { slug: 'classic-mug' },
+  ];
+}
+
 export async function generateMetadata({ params }: ProductPageProps) {
   const { slug } = await params;
   return {
