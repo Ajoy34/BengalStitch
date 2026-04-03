@@ -1,0 +1,368 @@
+type Query {
+  me: User!
+  myProducts(filter: ProductFilterInput, pagination: PaginationInput): ProductConnection!
+  myOrders(filter: OrderFilterInput, pagination: PaginationInput): OrderConnection!
+  myEarnings(period: Period!): EarningsReport!
+  myAnalytics(period: Period!): AnalyticsReport!
+  myStore: Store!
+  myAffiliateLinks: [AffiliateLink!]!
+  productDetail(id: ID!): Product!
+}
+
+type Mutation {
+  createProduct(input: CreateProductInput!): Product!
+  updateProduct(id: ID!, input: UpdateProductInput!): Product!
+  deleteProduct(id: ID!): Boolean!
+  updateStore(input: UpdateStoreInput!): Store!
+  requestPayout(input: PayoutInput!): Payout!
+  createAffiliateLink(productId: ID!): AffiliateLink!
+}
+
+type Subscription {
+  orderUpdate(orderId: ID!): Order!
+  newOrder: Order!
+  notificationReceived: Notification!
+}
+
+# ─── Types ──────────────────────────────────
+
+type User {
+  id: ID!
+  email: String!
+  fullName: String!
+  phone: String
+  avatarUrl: String
+  country: String!
+  language: String!
+  role: UserRole!
+  isVerified: Boolean!
+  creatorProfile: CreatorProfile
+  createdAt: DateTime!
+}
+
+type CreatorProfile {
+  id: ID!
+  storeName: String!
+  storeSlug: String!
+  bio: String
+  logoUrl: String
+  bannerUrl: String
+  subscriptionTier: SubscriptionTier!
+  commissionRate: Float!
+  totalEarnings: Float!
+  totalSales: Int!
+  isVerifiedSeller: Boolean!
+}
+
+type Product {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  productType: ProductType!
+  basePrice: Float!
+  sellingPrice: Float!
+  profitMargin: Float!
+  currency: String!
+  status: ProductStatus!
+  tags: [String!]!
+  viewCount: Int!
+  saleCount: Int!
+  isFeatured: Boolean!
+  mockupUrls: MockupUrls
+  variants: [ProductVariant!]!
+  designs: [ProductDesign!]!
+  creator: CreatorProfile!
+  rating: Float
+  reviewCount: Int
+  shareableLink: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ProductVariant {
+  id: ID!
+  size: String
+  color: String
+  colorHex: String
+  sku: String!
+  additionalPrice: Float!
+  stockStatus: StockStatus!
+}
+
+type ProductDesign {
+  id: ID!
+  designUrl: String!
+  thumbnailUrl: String!
+  placement: DesignPlacement!
+  positionX: Float!
+  positionY: Float!
+  scale: Float!
+  rotation: Float!
+}
+
+type MockupUrls {
+  front: String
+  back: String
+  side: String
+  threeDModel: String
+  video: String
+  ogImage: String
+}
+
+type Order {
+  id: ID!
+  orderNumber: String!
+  status: OrderStatus!
+  items: [OrderItem!]!
+  subtotal: Float!
+  shippingCost: Float!
+  tax: Float!
+  total: Float!
+  currency: String!
+  trackingNumber: String
+  courier: String
+  createdAt: DateTime!
+}
+
+type OrderItem {
+  id: ID!
+  product: Product!
+  variant: ProductVariant!
+  quantity: Int!
+  unitPrice: Float!
+  totalPrice: Float!
+}
+
+type Store {
+  id: ID!
+  storeName: String!
+  storeSlug: String!
+  bio: String
+  logoUrl: String
+  bannerUrl: String
+  products: [Product!]!
+  productCount: Int!
+}
+
+type AffiliateLink {
+  id: ID!
+  code: String!
+  productId: ID!
+  commissionPercent: Float!
+  clickCount: Int!
+  conversionCount: Int!
+  totalEarned: Float!
+  isActive: Boolean!
+}
+
+type Payout {
+  id: ID!
+  amount: Float!
+  currency: String!
+  method: String!
+  status: PayoutStatus!
+  reference: String
+  processedAt: DateTime
+  createdAt: DateTime!
+}
+
+type Notification {
+  id: ID!
+  type: NotificationType!
+  title: String!
+  body: String!
+  isRead: Boolean!
+  sentAt: DateTime!
+}
+
+type EarningsReport {
+  totalEarnings: Float!
+  periodEarnings: Float!
+  pendingPayouts: Float!
+  completedPayouts: Float!
+  dailyEarnings: [DailyEarning!]!
+}
+
+type DailyEarning {
+  date: String!
+  amount: Float!
+  orders: Int!
+}
+
+type AnalyticsReport {
+  totalViews: Int!
+  totalSales: Int!
+  conversionRate: Float!
+  topProducts: [Product!]!
+  viewsByDay: [DailyStat!]!
+  salesByDay: [DailyStat!]!
+}
+
+type DailyStat {
+  date: String!
+  value: Int!
+}
+
+# ─── Connections (Pagination) ───────────────
+
+type ProductConnection {
+  items: [Product!]!
+  total: Int!
+  page: Int!
+  totalPages: Int!
+  hasMore: Boolean!
+}
+
+type OrderConnection {
+  items: [Order!]!
+  total: Int!
+  page: Int!
+  totalPages: Int!
+  hasMore: Boolean!
+}
+
+# ─── Inputs ─────────────────────────────────
+
+input CreateProductInput {
+  title: String!
+  description: String
+  productType: ProductType!
+  basePrice: Float!
+  sellingPrice: Float!
+  currency: String
+  tags: [String!]
+  variants: [CreateVariantInput!]
+}
+
+input UpdateProductInput {
+  title: String
+  description: String
+  sellingPrice: Float
+  basePrice: Float
+  status: ProductStatus
+  tags: [String!]
+}
+
+input CreateVariantInput {
+  size: String
+  color: String
+  colorHex: String
+  additionalPrice: Float
+}
+
+input UpdateStoreInput {
+  storeName: String
+  bio: String
+  logoUrl: String
+  bannerUrl: String
+}
+
+input PayoutInput {
+  amount: Float!
+  method: String!
+}
+
+input ProductFilterInput {
+  search: String
+  productType: ProductType
+  status: ProductStatus
+  minPrice: Float
+  maxPrice: Float
+}
+
+input OrderFilterInput {
+  status: OrderStatus
+  dateFrom: DateTime
+  dateTo: DateTime
+}
+
+input PaginationInput {
+  page: Int = 1
+  limit: Int = 24
+}
+
+# ─── Enums ──────────────────────────────────
+
+enum UserRole {
+  USER
+  CREATOR
+  ADMIN
+}
+
+enum SubscriptionTier {
+  FREE
+  PRO
+  BRAND
+  ENTERPRISE
+}
+
+enum ProductType {
+  TSHIRT
+  HOODIE
+  MUG
+  PHONE_CASE
+  TOTE_BAG
+  POSTER
+  CAP
+  SHOES
+  JEWELRY
+}
+
+enum ProductStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+enum DesignPlacement {
+  FRONT
+  BACK
+  LEFT
+  RIGHT
+  ALL_OVER
+}
+
+enum StockStatus {
+  IN_STOCK
+  LOW
+  OUT_OF_STOCK
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  PRINTED
+  SHIPPED
+  DELIVERED
+  RETURNED
+  CANCELLED
+}
+
+enum PayoutStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum NotificationType {
+  ORDER
+  PAYMENT
+  PAYOUT
+  SYSTEM
+  PROMO
+}
+
+enum Period {
+  TODAY
+  WEEK
+  MONTH
+  QUARTER
+  YEAR
+  ALL_TIME
+}
+
+scalar DateTime

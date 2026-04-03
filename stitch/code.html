@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #14121b;
+            color: #e6e0ee;
+        }
+        .editorial-headline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(54, 51, 62, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#fe00fe",
+                      "on-error": "#690005",
+                      "on-secondary": "#5b005b",
+                      "surface-container-lowest": "#0f0d16",
+                      "primary-fixed-dim": "#00dddd",
+                      "outline-variant": "#494456",
+                      "surface-container-low": "#1c1a24",
+                      "on-secondary-fixed-variant": "#810081",
+                      "on-tertiary-container": "#d0beff",
+                      "primary-fixed": "#00fbfb",
+                      "surface-tint": "#00dddd",
+                      "background": "#14121b",
+                      "tertiary-container": "#6200ee",
+                      "error": "#ffb4ab",
+                      "primary": "#00dddd",
+                      "on-primary": "#003737",
+                      "primary-container": "#005e5e",
+                      "on-tertiary-fixed": "#22005d",
+                      "on-background": "#e6e0ee",
+                      "error-container": "#93000a",
+                      "on-primary-fixed": "#002020",
+                      "on-surface-variant": "#cbc3d9",
+                      "surface-variant": "#36333e",
+                      "on-primary-fixed-variant": "#004f4f",
+                      "secondary": "#ffabf3",
+                      "tertiary": "#cfbdff",
+                      "inverse-primary": "#006a6a",
+                      "surface": "#14121b",
+                      "surface-bright": "#3b3842",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed": "#380038",
+                      "tertiary-fixed": "#e8ddff",
+                      "on-tertiary-fixed-variant": "#5300cd",
+                      "on-surface": "#e6e0ee",
+                      "inverse-on-surface": "#322f39",
+                      "on-secondary-container": "#500050",
+                      "secondary-fixed": "#ffd7f5",
+                      "tertiary-fixed-dim": "#cfbdff",
+                      "surface-container-highest": "#36333e",
+                      "surface-dim": "#14121b",
+                      "inverse-surface": "#e6e0ee",
+                      "outline": "#948da2",
+                      "on-tertiary": "#3a0093",
+                      "on-primary-container": "#00dede",
+                      "secondary-fixed-dim": "#ffabf3",
+                      "surface-container": "#211e28",
+                      "surface-container-high": "#2b2933"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#14121b]/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.3)] flex justify-between items-center px-8 h-20 w-full font-['Plus_Jakarta_Sans'] tracking-tight">
+<div class="text-2xl font-black tracking-tighter text-[#00dddd]">AmarPOD</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-[#00dddd] border-b-2 border-[#00dddd] pb-1 hover:text-[#ffabf3] transition-colors duration-300" href="#">Marketplace</a>
+<a class="text-[#cfbdff] hover:text-[#ffabf3] transition-colors duration-300" href="#">Design Studio</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-[#cfbdff] hover:text-[#00dddd] transition-colors">search</button>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2 rounded-md font-bold uppercase tracking-widest text-sm scale-95 active:scale-90 transition-transform">Login</button>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden px-8">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-1/4 -right-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -left-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"></div>
+</div>
+<div class="container mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+<div class="space-y-8">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-container/20 text-secondary border border-secondary/20 font-semibold text-xs tracking-widest uppercase">Global Fulfillment • Local Payments</span>
+<h1 class="editorial-headline text-6xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] text-on-background">
+                        Design <span class="text-primary">globally</span>,<br/>
+                        Sell <span class="text-secondary">locally</span>.
+                    </h1>
+<p class="text-xl text-on-surface-variant max-w-lg leading-relaxed">
+                        The ultimate print-on-demand platform for Bangladeshi creators. Upload your art, we handle the production, shipping, and payouts in bKash/Nagad.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-10 py-4 rounded-md font-extrabold uppercase tracking-widest hover:shadow-[0_0_30px_rgba(0,221,221,0.4)] transition-all">Start Selling</button>
+<button class="border border-outline-variant hover:border-secondary hover:text-secondary px-10 py-4 rounded-md font-extrabold uppercase tracking-widest transition-all">Explore Studio</button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary/10 rounded-[40px] blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
+<img class="w-full h-auto rounded-[32px] shadow-2xl relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500" data-alt="3D render of a premium minimalist black t-shirt floating in a high-tech studio with neon cyan and magenta rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXlUhUo80ya30PpexggkqYN63xOUey7rylDIP3EKdUzXBvR8n1jduDaTuiPpLqi-y3oj5bY7W3Rfl3ZuYAOIZgvZEJRG8ijVCEOzivXFnOVEgvePpm81V8uVIf3IKaSBkpxLjpQMTmDeJVR-lzOdw_Ojn03mdDaqBUjdxTd83nlUf7v7SgcxloxHtS8iGFTG6uzqOzDQWbEUyDp0pX5i2MOU4w1IsuEkZuDIzFaKf8zoKRhkBQKNPfiG0IWEsXKZLSpAPSj7x3iA"/>
+</div>
+</div>
+</section>
+<!-- Product Preview Grid (3D Mockups) -->
+<section class="py-24 bg-surface-container-low px-8">
+<div class="container mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="editorial-headline text-4xl md:text-5xl font-bold mb-4">Premium Canvas</h2>
+<p class="text-tertiary max-w-md">Your art deserves the highest quality blanks. From ringspun cotton to ceramic stoneware.</p>
+</div>
+<div class="flex gap-2">
+<span class="px-4 py-2 bg-surface-container-highest rounded-full text-xs font-bold uppercase tracking-widest">T-Shirts</span>
+<span class="px-4 py-2 bg-surface-container-highest rounded-full text-xs font-bold uppercase tracking-widest opacity-50">Hoodies</span>
+<span class="px-4 py-2 bg-surface-container-highest rounded-full text-xs font-bold uppercase tracking-widest opacity-50">Mugs</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- T-Shirt -->
+<div class="group relative bg-surface-container rounded-[32px] overflow-hidden transition-all hover:translate-y-[-8px]">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Modern streetwear white t-shirt mockup with high-resolution texture details on a dark aesthetic background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3l2xve2ebMiBz4B3KqFnIcyn8duJI-ktcDufeGLjABevNqDJzuQLVFNueom8TMq8j14ytBvkHv0W6usqM9TR7ue34WktwWLG1LhytM9mH6wEiSVrP-8_qwMfjXHoCqCV8p6oAnqak1MlHmtsKQkmrbnT5dGZJWKO0u3P7OfNAF5dj7B1N5k5QnENYoCMahoGp46LpbZ7dT3yS-jLvqCz0bcV8c-MH4ifDFyvudOHsjDbXwqOp3XezGRfQ3HhsMwIHwnPaVskK2w"/>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-background via-background/80 to-transparent">
+<h3 class="text-2xl font-bold mb-2">Essential Tee</h3>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">BDT 850+</span>
+<button class="material-symbols-outlined text-secondary">add_circle</button>
+</div>
+</div>
+</div>
+<!-- Hoodie -->
+<div class="group relative bg-surface-container rounded-[32px] overflow-hidden transition-all hover:translate-y-[-8px] md:mt-12">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Heavyweight charcoal hoodie mockup folded elegantly in a moody studio setting with soft focus textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgDvAkTDQ_9Dv3_nIEmGLYPv-pNQSXq33Nmdnad95A1Tj_tWMkwFyt2yLywFZCbewjsvJa3oH8qwEncUCwUkWWcwJ9QpDECVakTC90_aOIS1u7p7JYB6FPv1TlryU_EHeN855hQ0BYVGxhK4tjQ_CVmHj6KZNYBSv9HU91wCwC1iby9TpaIB-2F-8KBfzcUPhwLVvMRqFtPICf1zc2tBIQdOPMtB76Xr34Wmisj2fDvnFLavg6zCB9jzmGR4kqVFr28yPljH6_XA"/>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-background via-background/80 to-transparent">
+<h3 class="text-2xl font-bold mb-2">Urban Hoodie</h3>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">BDT 1450+</span>
+<button class="material-symbols-outlined text-secondary">add_circle</button>
+</div>
+</div>
+</div>
+<!-- Mug -->
+<div class="group relative bg-surface-container rounded-[32px] overflow-hidden transition-all hover:translate-y-[-8px]">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Matte black ceramic coffee mug with dramatic top-down lighting showcasing smooth surface and elegant handle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDecIBLXJLvczGZwz1LuJokca8x8rxOYwEazbJciate3yfit4kNjgBEFZaRceVtdWhrqescAHv3-cwuVEGWt6aeWxFkvv-pSNetV4LTSezETlxn6JIr21fNwZr9xuxgAuchWMFgPcOEDR5AvPmKFXKssjPjZGN9_jF8PkrxLmLP_XR9YAuvpz5JiwFceRzLikb4nZycx6rzYq-eQoX3krT1M67KDNGKx_lFoPuzUz_81GpBR-rXqN8CyTBMhDzcuMsAGKGD8I9lXA"/>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-background via-background/80 to-transparent">
+<h3 class="text-2xl font-bold mb-2">Artisan Mug</h3>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">BDT 450+</span>
+<button class="material-symbols-outlined text-secondary">add_circle</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-32 px-8 overflow-hidden">
+<div class="container mx-auto">
+<div class="text-center mb-24">
+<h2 class="editorial-headline text-5xl md:text-6xl font-extrabold mb-6">Launch your brand in minutes</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">We've built the bridges. You just bring the vision. No inventory, no risk, all profit.</p>
+</div>
+<div class="relative grid grid-cols-1 md:grid-cols-4 gap-4">
+<!-- Step 1 -->
+<div class="surface-container-high p-8 rounded-[32px] flex flex-col items-center text-center group hover:bg-surface-container-highest transition-colors">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">cloud_upload</span>
+</div>
+<h4 class="text-xl font-bold mb-3">Upload</h4>
+<p class="text-on-surface-variant text-sm">Upload your high-res artwork or designs.</p>
+<div class="mt-8 text-primary/20 text-6xl font-black italic">01</div>
+</div>
+<!-- Step 2 -->
+<div class="surface-container-high p-8 rounded-[32px] flex flex-col items-center text-center group hover:bg-surface-container-highest transition-colors md:mt-12">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">brush</span>
+</div>
+<h4 class="text-xl font-bold mb-3">Design</h4>
+<p class="text-on-surface-variant text-sm">Use our studio to preview on 100+ products.</p>
+<div class="mt-8 text-secondary/20 text-6xl font-black italic">02</div>
+</div>
+<!-- Step 3 -->
+<div class="surface-container-high p-8 rounded-[32px] flex flex-col items-center text-center group hover:bg-surface-container-highest transition-colors">
+<div class="w-16 h-16 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">storefront</span>
+</div>
+<h4 class="text-xl font-bold mb-3">Sell</h4>
+<p class="text-on-surface-variant text-sm">List products on our marketplace or your site.</p>
+<div class="mt-8 text-tertiary/20 text-6xl font-black italic">03</div>
+</div>
+<!-- Step 4 -->
+<div class="surface-container-high p-8 rounded-[32px] flex flex-col items-center text-center group hover:bg-surface-container-highest transition-colors md:mt-12">
+<div class="w-16 h-16 rounded-2xl bg-primary-container flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">payments</span>
+</div>
+<h4 class="text-xl font-bold mb-3">Payout</h4>
+<p class="text-on-surface-variant text-sm">Receive profits instantly via bKash or Nagad.</p>
+<div class="mt-8 text-primary/20 text-6xl font-black italic">04</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Marketplace (Bento Grid) -->
+<section class="py-24 bg-surface-container-low px-8">
+<div class="container mx-auto">
+<div class="flex items-center justify-between mb-16">
+<h2 class="editorial-headline text-4xl font-bold">Trending Creations</h2>
+<button class="text-primary font-bold hover:underline">View All Creations</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-[40px] surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" data-alt="Full body shot of a model wearing a limited edition artistic graphic tee in an urban industrial setting with harsh lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhksxVrdsL_Mf9yPmo5VUTo_r8TrINS99vOT_u0f5tohoTDPT3VtNOqpjCZWhf727xbeGrDOsSWuVJ7-DWMAYEuC0dy3eyWVx35ctHly4bG2mSMIKBnmCyec7cR2RnueiJW0DsU-OcgIkVtEfwtursAPrsSbtyqrXMIdlwYk8PbmvIfY-rssZucwibIp-SFYlmC5htaL9zmAC4SqjdXsj27iJZrU_cDzvt9Bimhh5PN2WJdPustaoUAnYrvYxYDFIul9pJ-ZNSVQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent flex flex-col justify-end p-10">
+<span class="bg-primary text-on-primary text-[10px] font-black uppercase tracking-[0.2em] w-fit px-4 py-1 rounded-full mb-4">New Drop</span>
+<h3 class="text-3xl font-bold mb-2">The 'Dhaka Nights' Collection</h3>
+<p class="text-tertiary mb-6">Designed by @AuraCreative</p>
+<button class="bg-white text-black font-bold py-3 px-8 rounded-full w-fit hover:scale-105 transition-transform">Shop Collection</button>
+</div>
+</div>
+<div class="md:col-span-2 group relative overflow-hidden rounded-[40px] surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" data-alt="Close up of a range of colorful minimalist apparel hanging on a sleek modern rack with soft diffused lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSBagkS-atK37gtA9d20BF4oLJ-NfOaCtRTLwkaMPTDX2NQYEHPvS7UqSb8DTj9dWoYGcg_tFoXlcNPIt83b_MLZokEBmxhpiUgco1H-J2q_vlvEmiaXTMxSvq129up-jOZ5Fu-iiVTSFtLXrS8WLtr-HchaKMosGl_oOZYuIUvzZP7juVUH-pwIYD4-kiAqKpFf9RLbK-c-93UceRq746H9-rWz-Yn_SLWzdnKH7Whc0LFCTxEhuaxV-RXmLRJadh5GwwO4zFkg"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all flex items-center justify-center">
+<div class="text-center">
+<h3 class="text-2xl font-bold">Creator Spotlight</h3>
+<p class="text-secondary font-medium">Join 5,000+ Designers</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-[40px] surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" data-alt="Collection of artistic lifestyle products including tote bags and stationary with vibrant patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3UmUwXTrzX4fpFWmVplwIBTNpxn3Yez5JJi_yuv7ZkDmqfZnJIJphrR7PjVZVbhhuyz9sRkzDAbXZR7Sm9QXsZlqh5Dkewjhp0sihbacq9tJjkooqCTpr1epBZSt5-7oN7ks62d4bUuIjy6RJUtVTBz5DpjTdB1-UkvH96OzJ48WQaf--SlobIXRBn70kCSZu4MEdTHkArLTk46CTsPPzVfJBjDoAZrOsKoMO4P7XJw5E9-H-Q1tNQo-kTz3PHQqFhSCnInMIAQ"/>
+</div>
+<div class="group relative overflow-hidden rounded-[40px] surface-container flex flex-col items-center justify-center p-8 bg-gradient-to-br from-tertiary-container to-surface-container">
+<span class="material-symbols-outlined text-6xl text-primary mb-4">rocket_launch</span>
+<h3 class="text-xl font-bold text-center">Ready to launch?</h3>
+<p class="text-sm text-center text-on-surface-variant mt-2">Start your store today.</p>
+<button class="mt-6 px-6 py-2 border-2 border-on-surface font-bold rounded-full hover:bg-white hover:text-black transition-colors">Go Studio</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA & Payments -->
+<section class="py-32 px-8 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5"></div>
+<div class="container mx-auto relative z-10 text-center">
+<h2 class="editorial-headline text-5xl md:text-7xl font-extrabold mb-12 leading-[0.9]">Start your creative<br/><span class="text-primary">freedom</span> today.</h2>
+<div class="flex flex-col items-center gap-12">
+<button class="bg-primary text-on-primary text-xl font-black uppercase tracking-widest px-16 py-6 rounded-md hover:shadow-[0_0_50px_rgba(0,221,221,0.5)] transition-all transform hover:-translate-y-1">Open Your Store</button>
+<div class="w-full max-w-3xl">
+<p class="text-xs font-bold uppercase tracking-[0.3em] text-outline mb-8">Integrated Global &amp; Local Payments</p>
+<div class="flex flex-wrap justify-center gap-10 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
+<span class="font-bold">bKash</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-3xl">payments</span>
+<span class="font-bold">Nagad</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-3xl">credit_card</span>
+<span class="font-bold">Stripe</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-3xl">paid</span>
+<span class="font-bold">PayPal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#14121b] w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-[#cfbdff]/10 font-['Inter'] text-sm">
+<div class="flex flex-col gap-2">
+<div class="text-[#00dddd] font-bold text-xl">AmarPOD</div>
+<p class="text-[#cfbdff]/50">© 2024 AmarPOD. Creative Freedom.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-[#cfbdff]/50 hover:text-[#ffabf3] transition-colors" href="#">bKash</a>
+<a class="text-[#cfbdff]/50 hover:text-[#ffabf3] transition-colors" href="#">Nagad</a>
+<a class="text-[#cfbdff]/50 hover:text-[#ffabf3] transition-colors" href="#">Stripe</a>
+<a class="text-[#cfbdff]/50 hover:text-[#ffabf3] transition-colors" href="#">PayPal</a>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-[#00dddd]">social_distance</span>
+<span class="material-symbols-outlined text-[#00dddd]">alternate_email</span>
+<span class="material-symbols-outlined text-[#00dddd]">public</span>
+</div>
+</footer>
+</body></html>
