@@ -16,6 +16,38 @@ type Product = {
   is_published: boolean;
 };
 
+type View = 'front' | 'back';
+
+const INVENTORY_PRODUCTS: Array<{
+  key: string;
+  title: string;
+  category: string;
+  images: { front: string; back: string };
+}> = [
+  {
+    key: 'tee',
+    title: 'Unisex T‑Shirt',
+    category: 'tshirt',
+    images: {
+      front:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCXlUhUo80ya30PpexggkqYN63xOUey7rylDIP3EKdUzXBvR8n1jduDaTuiPpLqi-y3oj5bY7W3Rfl3ZuYAOIZgvZEJRG8ijVCEOzivXFnOVEgvePpm81V8uVIf3IKaSBkpxLjpQMTmDeJVR-lzOdw_Ojn03mdDaqBUjdxTd83nlUf7v7SgcxloxHtS8iGFTG6uzqOzDQWbEUyDp0pX5i2MOU4w1IsuEkZuDIzFaKf8zoKRhkBQKNPfiG0IWEsXKZLSpAPSj7x3iA',
+      back:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCXlUhUo80ya30PpexggkqYN63xOUey7rylDIP3EKdUzXBvR8n1jduDaTuiPpLqi-y3oj5bY7W3Rfl3ZuYAOIZgvZEJRG8ijVCEOzivXFnOVEgvePpm81V8uVIf3IKaSBkpxLjpQMTmDeJVR-lzOdw_Ojn03mdDaqBUjdxTd83nlUf7v7SgcxloxHtS8iGFTG6uzqOzDQWbEUyDp0pX5i2MOU4w1IsuEkZuDIzFaKf8zoKRhkBQKNPfiG0IWEsXKZLSpAPSj7x3iA',
+    },
+  },
+  {
+    key: 'hoodie',
+    title: 'Hoodie',
+    category: 'hoodie',
+    images: {
+      front:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuC3l2xve2ebMiBz4B3KqFnIcyn8duJI-ktcDufeGLjABevNqDJzuQLVFNueom8TMq8j14ytBvkHv0W6usqM9TR7ue34WktwWLG1LhytM9mH6wEiSVrP-8_qwMfjXHoCqCV8p6oAnqak1MlHmtsKQkmrbnT5dGZJWKO0u3P7OfNAF5dj7B1N5k5QnENYoCMahoGp46LpbZ7dT3yS-jLvqCz0bcV8c-MH4ifDFyvudOHsjDbXwqOp3XezGRfQ3HhsMwIHwnPaVskK2w',
+      back:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuC3l2xve2ebMiBz4B3KqFnIcyn8duJI-ktcDufeGLjABevNqDJzuQLVFNueom8TMq8j14ytBvkHv0W6usqM9TR7ue34WktwWLG1LhytM9mH6wEiSVrP-8_qwMfjXHoCqCV8p6oAnqak1MlHmtsKQkmrbnT5dGZJWKO0u3P7OfNAF5dj7B1N5k5QnENYoCMahoGp46LpbZ7dT3yS-jLvqCz0bcV8c-MH4ifDFyvudOHsjDbXwqOp3XezGRfQ3HhsMwIHwnPaVskK2w',
+    },
+  },
+];
+
 const FALLBACK_IMAGE =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCXlUhUo80ya30PpexggkqYN63xOUey7rylDIP3EKdUzXBvR8n1jduDaTuiPpLqi-y3oj5bY7W3Rfl3ZuYAOIZgvZEJRG8ijVCEOzivXFnOVEgvePpm81V8uVIf3IKaSBkpxLjpQMTmDeJVR-lzOdw_Ojn03mdDaqBUjdxTd83nlUf7v7SgcxloxHtS8iGFTG6uzqOzDQWbEUyDp0pX5i2MOU4w1IsuEkZuDIzFaKf8zoKRhkBQKNPfiG0IWEsXKZLSpAPSj7x3iA';
 
@@ -38,7 +70,11 @@ async function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
-async function composeMockup(baseUrl: string, designUrl: string): Promise<Blob> {
+async function composeMockup(
+  baseUrl: string,
+  designUrl: string,
+  opts: { x: number; y: number; scale: number; rotation: number },
+): Promise<Blob> {
   const [base, design] = await Promise.all([loadImage(baseUrl), loadImage(designUrl)]);
 
   const size = 1024;
@@ -56,14 +92,19 @@ async function composeMockup(baseUrl: string, designUrl: string): Promise<Blob> 
   const by = (size - bh) / 2;
   ctx.drawImage(base, bx, by, bw, bh);
 
-  // place design in center (fit within 55% square)
-  const target = size * 0.55;
+  const target = size * 0.55 * opts.scale;
   const designScale = Math.min(target / design.width, target / design.height);
   const dw = design.width * designScale;
   const dh = design.height * designScale;
-  const dx = (size - dw) / 2;
-  const dy = (size - dh) / 2;
-  ctx.drawImage(design, dx, dy, dw, dh);
+
+  const cx = size * opts.x;
+  const cy = size * opts.y;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate((opts.rotation * Math.PI) / 180);
+  ctx.drawImage(design, -dw / 2, -dh / 2, dw, dh);
+  ctx.restore();
 
   return await new Promise<Blob>((resolve, reject) => {
     canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error('Failed to export image'))), 'image/png', 0.95);
@@ -78,6 +119,16 @@ export default function StudioPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string>('');
 
+  const [step, setStep] = useState<'select' | 'edit'>('select');
+  const [selectedInventoryKey, setSelectedInventoryKey] = useState(INVENTORY_PRODUCTS[0].key);
+  const inventory = INVENTORY_PRODUCTS.find((p) => p.key === selectedInventoryKey) || INVENTORY_PRODUCTS[0];
+  const [view, setView] = useState<View>('front');
+
+  const [posX, setPosX] = useState(0.5);
+  const [posY, setPosY] = useState(0.5);
+  const [scale, setScale] = useState(1);
+  const [rotation, setRotation] = useState(0);
+
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedId, setSelectedId] = useState<string>('');
 
@@ -85,7 +136,10 @@ export default function StudioPage() {
   const [designPreview, setDesignPreview] = useState<string>('');
 
   const selected = products.find((p) => p.id === selectedId);
-  const baseImage = (selected?.images?.[0] || selected?.mockup_images?.[0] || FALLBACK_IMAGE) as string;
+  const baseImage = (selected?.images?.[view === 'front' ? 0 : 1] ||
+    selected?.images?.[0] ||
+    inventory.images[view] ||
+    FALLBACK_IMAGE) as string;
 
   useEffect(() => {
     async function run() {
@@ -120,6 +174,7 @@ export default function StudioPage() {
       } else {
         setProducts((items as unknown as Product[]) || []);
         setSelectedId(((items as unknown as Product[])?.[0]?.id as string) || '');
+        setStep(((items as unknown as Product[])?.length || 0) > 0 ? 'edit' : 'select');
       }
 
       setLoading(false);
@@ -134,6 +189,58 @@ export default function StudioPage() {
     if (!file) return;
     const url = await toDataUrl(file);
     setDesignPreview(url);
+  }
+
+  async function createDraftFromInventory() {
+    if (!user) return;
+    setError('');
+    setSaving(true);
+
+    const { data: store, error: storeErr } = await supabase
+      .from('stores')
+      .select('id')
+      .eq('user_id', user.id)
+      .single();
+
+    if (storeErr || !store) {
+      setError('Please set up your store first.');
+      setSaving(false);
+      return;
+    }
+
+    const baseSlug = inventory.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const slug = `${baseSlug}-${Date.now().toString(36)}`;
+
+    const { data: inserted, error: insErr } = await supabase
+      .from('products')
+      .insert({
+        store_id: store.id,
+        title: `${inventory.title} — Custom`,
+        slug,
+        description: 'Customized in BengalStitch Studio',
+        category: inventory.category,
+        images: [inventory.images.front, inventory.images.back],
+        mockup_images: [],
+        sizes: ['S', 'M', 'L', 'XL'],
+        colors: [],
+        is_published: false,
+        base_price: 0,
+        sell_price: 0,
+        total_sold: 0,
+      })
+      .select('id, title, slug, images, mockup_images, is_published')
+      .single();
+
+    if (insErr || !inserted) {
+      setError(insErr?.message || 'Failed to create draft product');
+      setSaving(false);
+      return;
+    }
+
+    setProducts((prev) => [inserted as unknown as Product, ...prev]);
+    setSelectedId((inserted as unknown as Product).id);
+    setStep('edit');
+    setSaving(false);
   }
 
   async function saveMockup() {
@@ -171,7 +278,12 @@ export default function StudioPage() {
       }
     }
 
-    const mockupBlob = await composeMockup(baseImage, designPublicUrl);
+    const mockupBlob = await composeMockup(baseImage, designPublicUrl, {
+      x: posX,
+      y: posY,
+      scale,
+      rotation,
+    });
     const mockupPath = `${baseKey}-mockup.png`;
     const { error: mockErr } = await supabase.storage
       .from('product-assets')
@@ -239,17 +351,74 @@ export default function StudioPage() {
         <div>
           <h1 className="editorial-headline text-2xl font-extrabold text-gray-900">Design Studio</h1>
           <p className="text-gray-500 mt-1">
-            Upload a design, attach it to a product, then share the product link. (GenAI editing is the next step.)
+            Select a base product, upload a design, place it on front/back, generate mockups, then publish.
           </p>
         </div>
-        <Link href="/dashboard/products/new" className="gradient-cta px-5 py-3 rounded-xl font-bold">
-          Create Product
-        </Link>
+        <div className="flex gap-2">
+          <button
+            onClick={() => setStep('select')}
+            className={`px-4 py-2.5 rounded-xl font-bold text-sm border ${
+              step === 'select' ? 'bg-gray-900 text-white border-gray-900' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
+            }`}
+          >
+            Select Product
+          </button>
+          <button
+            onClick={() => setStep('edit')}
+            disabled={!selectedId}
+            className={`px-4 py-2.5 rounded-xl font-bold text-sm border disabled:opacity-50 ${
+              step === 'edit' ? 'bg-gray-900 text-white border-gray-900' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
+            }`}
+          >
+            Editor
+          </button>
+        </div>
       </div>
 
       {error && <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-sm">{error}</div>}
 
-      <div className="grid lg:grid-cols-5 gap-6">
+      {step === 'select' && (
+        <div className="bg-white rounded-2xl border border-gray-100 p-6">
+          <h2 className="font-extrabold text-gray-900 text-lg">Choose a base product</h2>
+          <p className="text-gray-500 text-sm mt-1">We’ll create a draft product automatically — no manual product creation needed.</p>
+
+          <div className="grid md:grid-cols-2 gap-4 mt-6">
+            {INVENTORY_PRODUCTS.map((p) => (
+              <button
+                key={p.key}
+                onClick={() => setSelectedInventoryKey(p.key)}
+                className={`text-left rounded-2xl border p-4 transition-all ${
+                  selectedInventoryKey === p.key ? 'border-violet-300 bg-violet-50' : 'border-gray-100 hover:border-violet-200 hover:bg-gray-50'
+                }`}
+              >
+                <div className="flex gap-4">
+                  <div className="relative w-24 h-24 rounded-xl overflow-hidden border border-gray-100 bg-gray-50 flex-shrink-0">
+                    <Image src={p.images.front} alt={p.title} fill className="object-cover" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-gray-900">{p.title}</div>
+                    <div className="text-xs text-gray-500 mt-1 capitalize">{p.category}</div>
+                    <div className="text-xs text-gray-500 mt-2">Front + back views included</div>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div className="flex justify-end mt-6">
+            <button
+              onClick={createDraftFromInventory}
+              disabled={saving}
+              className="gradient-cta px-6 py-3 rounded-xl font-extrabold disabled:opacity-50"
+            >
+              {saving ? 'Creating…' : 'Start Designing'}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {step === 'edit' && (
+        <div className="grid lg:grid-cols-5 gap-6">
         {/* Left: product picker */}
         <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 p-5">
           <div className="flex items-center justify-between mb-4">
@@ -261,15 +430,7 @@ export default function StudioPage() {
 
           {products.length === 0 ? (
             <div className="text-sm text-gray-500">
-              No products yet. Create one first.
-              <div className="mt-3">
-                <Link
-                  href="/dashboard/products/new"
-                  className="inline-flex gradient-cta px-4 py-2 rounded-lg font-bold text-sm"
-                >
-                  Create your first product
-                </Link>
-              </div>
+              No products yet. Go to “Select Product” to start.
             </div>
           ) : (
             <div className="space-y-2">
@@ -319,6 +480,23 @@ export default function StudioPage() {
                 </Link>
               </div>
 
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex gap-2">
+                  {(['front', 'back'] as View[]).map((v) => (
+                    <button
+                      key={v}
+                      onClick={() => setView(v)}
+                      className={`px-4 py-2 rounded-xl text-sm font-bold border transition-all ${
+                        view === v ? 'bg-gray-900 text-white border-gray-900' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
+                      }`}
+                    >
+                      {v === 'front' ? 'Front' : 'Back'}
+                    </button>
+                  ))}
+                </div>
+                <div className="text-xs text-gray-500">Position • Scale • Rotate</div>
+              </div>
+
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="rounded-2xl border border-gray-100 overflow-hidden">
                   <div className="relative aspect-square bg-gray-50">
@@ -335,7 +513,7 @@ export default function StudioPage() {
                       <div className="text-sm text-gray-400">Upload a design to preview</div>
                     )}
                   </div>
-                  <div className="p-3 text-xs text-gray-500">Design overlay (MVP)</div>
+                  <div className="p-3 text-xs text-gray-500">Design preview</div>
                 </div>
               </div>
 
@@ -348,9 +526,24 @@ export default function StudioPage() {
                     onChange={(e) => onPickDesign(e.target.files?.[0] || null)}
                     className="w-full text-sm"
                   />
-                  <p className="text-xs text-gray-500 mt-2">
-                    Next upgrade: we’ll generate a real composed mockup and save it to Supabase Storage.
-                  </p>
+                  <div className="grid grid-cols-2 gap-3 mt-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">X</label>
+                      <input type="range" min="0.1" max="0.9" step="0.01" value={posX} onChange={(e) => setPosX(parseFloat(e.target.value))} className="w-full" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">Y</label>
+                      <input type="range" min="0.1" max="0.9" step="0.01" value={posY} onChange={(e) => setPosY(parseFloat(e.target.value))} className="w-full" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">Scale</label>
+                      <input type="range" min="0.5" max="1.8" step="0.01" value={scale} onChange={(e) => setScale(parseFloat(e.target.value))} className="w-full" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">Rotation</label>
+                      <input type="range" min="-45" max="45" step="1" value={rotation} onChange={(e) => setRotation(parseFloat(e.target.value))} className="w-full" />
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex items-end gap-3">
@@ -359,7 +552,7 @@ export default function StudioPage() {
                     disabled={saving}
                     className="flex-1 gradient-cta py-3 rounded-xl font-bold disabled:opacity-50"
                   >
-                    {saving ? 'Saving…' : 'Save as Mockup'}
+                    {saving ? 'Saving…' : `Generate ${view === 'front' ? 'Front' : 'Back'} Mockup`}
                   </button>
                   <Link
                     href={`/product/${selected.slug}`}
@@ -380,6 +573,7 @@ export default function StudioPage() {
           )}
         </div>
       </div>
+      )}
     </div>
   );
 }
