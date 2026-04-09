@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
+import { MulterModule } from '@nestjs/platform-express';
+import { FilesController } from './files.controller';
+import { FilesService } from './files.service';
 
 @Module({
-  controllers: [],
-  providers: [],
-  exports: [],
+  imports: [MulterModule.register({ limits: { fileSize: 10 * 1024 * 1024 } })],
+  controllers: [FilesController],
+  providers: [FilesService],
+  exports: [FilesService],
 })
 export class FilesModule {}

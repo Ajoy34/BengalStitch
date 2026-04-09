@@ -11,6 +11,7 @@ import { DesignsModule } from './modules/designs/designs.module';
 import { FulfillmentModule } from './modules/fulfillment/fulfillment.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
+import { AffiliatesModule } from './modules/affiliates/affiliates.module';
 import { FilesModule } from './modules/files/files.module';
 import { PrismaModule } from './prisma/prisma.module';
 
@@ -29,6 +30,7 @@ import { PrismaModule } from './prisma/prisma.module';
     FulfillmentModule,
     NotificationsModule,
     AnalyticsModule,
+    AffiliatesModule,
     FilesModule,
   ],
 })

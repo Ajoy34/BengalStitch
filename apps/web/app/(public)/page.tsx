@@ -2,6 +2,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/marketplace/HeroSection';
 import { CategoryBar } from '@/components/marketplace/CategoryBar';
+import { TrendingCollections } from '@/components/marketplace/TrendingCollections';
 import { HowItWorks } from '@/components/marketplace/HowItWorks';
 import { ProductShowcase } from '@/components/marketplace/ProductShowcase';
 import { IntegrationBar } from '@/components/marketplace/IntegrationBar';
@@ -19,6 +20,7 @@ export default function LandingPage() {
       <main>
         <HeroSection />
         <CategoryBar />
+        <TrendingCollections />
         <HowItWorks />
         <ProductShowcase />
         <IntegrationBar />
