@@ -32,7 +32,7 @@ export async function FeaturedProducts() {
       <div className="container mx-auto max-w-7xl">
         <div className="flex items-end justify-between gap-6 mb-10">
           <div>
-            <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Shop</span>
+            <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Shop</span>
             <h2 className="editorial-headline text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">
               Featured Products
             </h2>
@@ -55,17 +55,17 @@ export async function FeaturedProducts() {
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <Image src={img} alt={p.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute top-3 left-3">
-                    <span className="bg-white/90 backdrop-blur-sm text-xs font-bold text-violet-600 px-2.5 py-1 rounded-full">
+                    <span className="bg-white/90 backdrop-blur-sm text-xs font-bold text-green-600 px-2.5 py-1 rounded-full">
                       {p.category}
                     </span>
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold text-gray-800 text-sm group-hover:text-violet-600 transition-colors truncate">
+                  <h3 className="font-semibold text-gray-800 text-sm group-hover:text-green-600 transition-colors truncate">
                     {p.title}
                   </h3>
                   <div className="flex items-center justify-between mt-2">
-                    <span className="font-bold text-violet-600">৳ {Number(p.sell_price).toLocaleString()}</span>
+                    <span className="font-bold text-green-600">৳ {Number(p.sell_price).toLocaleString()}</span>
                     <span className="text-xs text-gray-400">{p.total_sold} sold</span>
                   </div>
                   {p.stores?.store_slug && (

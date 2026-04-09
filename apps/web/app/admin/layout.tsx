@@ -23,7 +23,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="hidden lg:flex w-64 bg-gray-900 text-white flex-col fixed h-full">
         <div className="p-6 border-b border-gray-800">
           <Link href="/admin" className="text-xl font-extrabold">
-            <span className="text-white">Bengal</span><span className="text-violet-400">Stitch</span>
+            <span className="text-white">Bengal</span><span className="text-green-400">Stitch</span>
           </Link>
           <p className="text-xs text-gray-500 mt-1">Admin Panel</p>
         </div>
@@ -35,7 +35,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 key={item.href}
                 href={item.href}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                  active ? 'bg-violet-600 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+                  active ? 'bg-green-600 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'
                 }`}
               >
                 <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

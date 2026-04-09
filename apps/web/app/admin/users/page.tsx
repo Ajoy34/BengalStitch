@@ -30,7 +30,7 @@ export default async function AdminUsersPage() {
                 <tr key={u.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-500 to-rose-500 flex items-center justify-center text-white text-xs font-bold">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-green-500 flex items-center justify-center text-white text-xs font-bold">
                         {(u.name || u.email || '?').charAt(0).toUpperCase()}
                       </div>
                       <div>
@@ -41,7 +41,7 @@ export default async function AdminUsersPage() {
                   </td>
                   <td className="px-6 py-4">
                     <span className={`text-xs font-bold px-2 py-1 rounded-full capitalize ${
-                      u.role === 'admin' ? 'bg-purple-100 text-purple-700' :
+                      u.role === 'admin' ? 'bg-green-100 text-green-700' :
                       u.role === 'seller' ? 'bg-blue-100 text-blue-700' :
                       u.role === 'affiliate' ? 'bg-green-100 text-green-700' :
                       'bg-gray-100 text-gray-600'

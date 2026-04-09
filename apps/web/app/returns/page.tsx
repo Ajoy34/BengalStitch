@@ -10,7 +10,7 @@ export default function ReturnsPage() {
       <main className="pt-28 pb-16 px-6 md:px-8 min-h-screen">
         <div className="container mx-auto max-w-3xl">
           <div className="mb-10">
-            <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Policy</span>
+            <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Policy</span>
             <h1 className="editorial-headline text-4xl font-extrabold text-gray-900 mt-3">Returns &amp; Refunds</h1>
             <p className="text-gray-400 mt-2 text-sm">Last updated: April 1, 2026</p>
           </div>

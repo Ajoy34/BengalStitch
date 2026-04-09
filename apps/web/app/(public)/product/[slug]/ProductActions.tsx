@@ -58,7 +58,7 @@ export function ProductActions({ garmentUrl, productTitle, productId, sellPrice,
         >
           Add to Cart
         </button>
-        <button className="w-14 h-14 rounded-xl border-2 border-gray-200 flex items-center justify-center hover:border-rose-400 hover:text-rose-500 text-gray-400 transition-colors text-xl">
+        <button className="w-14 h-14 rounded-xl border-2 border-gray-200 flex items-center justify-center hover:border-green-400 hover:text-green-500 text-gray-400 transition-colors text-xl">
           &#9829;
         </button>
       </div>
@@ -80,9 +80,9 @@ export function ProductActions({ garmentUrl, productTitle, productId, sellPrice,
       </div>
 
       {/* Share & earn */}
-      <div className="bg-gradient-to-r from-violet-50 to-rose-50 rounded-2xl p-5 border border-violet-100">
+      <div className="bg-gradient-to-r from-green-50 to-green-50 rounded-2xl p-5 border border-green-100">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-violet-100 rounded-full flex items-center justify-center text-violet-600">
+          <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
             </svg>
@@ -91,14 +91,14 @@ export function ProductActions({ garmentUrl, productTitle, productId, sellPrice,
             <p className="font-bold text-gray-900 text-sm">Share &amp; Earn 10% Commission</p>
             <p className="text-gray-500 text-xs">Copy your affiliate link and earn on every sale</p>
           </div>
-          <button className="ml-auto text-violet-600 font-bold text-sm hover:underline">Copy Link</button>
+          <button className="ml-auto text-green-600 font-bold text-sm hover:underline">Copy Link</button>
         </div>
       </div>
 
       {/* Creator */}
       {storeName && storeSlug && (
         <div className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 to-rose-500 flex items-center justify-center text-white font-bold text-lg">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-green-500 flex items-center justify-center text-white font-bold text-lg">
             {storeName.charAt(0)}
           </div>
           <div className="flex-1">
@@ -106,7 +106,7 @@ export function ProductActions({ garmentUrl, productTitle, productId, sellPrice,
           </div>
           <Link
             href={`/store/${storeSlug}`}
-            className="text-violet-600 font-bold text-sm border border-violet-200 px-4 py-2 rounded-lg hover:bg-violet-50 transition-colors"
+            className="text-green-600 font-bold text-sm border border-green-200 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors"
           >
             View Store
           </Link>

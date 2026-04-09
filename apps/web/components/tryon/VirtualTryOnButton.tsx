@@ -15,7 +15,7 @@ export function VirtualTryOnButton({ onClick }: Props) {
       whileTap={{ scale: 0.98 }}
     >
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500"
+        className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-green-500 to-green-500"
         animate={{
           backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
         }}

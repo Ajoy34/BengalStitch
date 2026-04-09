@@ -44,7 +44,7 @@ export default async function EarningsPage() {
 
       {/* Request Payout */}
       {pending > 0 && (
-        <div className="bg-gradient-to-r from-violet-50 to-rose-50 rounded-2xl p-6 border border-violet-100 mb-8">
+        <div className="bg-gradient-to-r from-green-50 to-green-50 rounded-2xl p-6 border border-green-100 mb-8">
           <div className="flex items-center justify-between">
             <div>
               <p className="font-bold">Ready to withdraw?</p>

@@ -57,7 +57,7 @@ export function Testimonials() {
     <section className="py-24 px-6 md:px-8 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Trusted Community</span>
+          <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Trusted Community</span>
           <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">
             8,000+ Sellers Can&apos;t Be Wrong!
           </h2>
@@ -92,7 +92,7 @@ export function Testimonials() {
                 />
                 <div>
                   <div className="font-bold text-gray-900">{t.name}</div>
-                  <div className="text-sm text-violet-600">{t.role}</div>
+                  <div className="text-sm text-green-600">{t.role}</div>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@ export function Testimonials() {
         <div className="flex items-center justify-center gap-3 mt-10">
           <button
             onClick={() => setActive((p) => (p > 0 ? p - 1 : totalPages - 1))}
-            className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-violet-50 transition-colors"
+            className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-green-50 transition-colors"
           >
             <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -114,13 +114,13 @@ export function Testimonials() {
               key={i}
               onClick={() => setActive(i)}
               className={`w-3 h-3 rounded-full transition-all ${
-                active === i ? 'bg-violet-600 w-8' : 'bg-gray-300 hover:bg-gray-400'
+                active === i ? 'bg-green-600 w-8' : 'bg-gray-300 hover:bg-gray-400'
               }`}
             />
           ))}
           <button
             onClick={() => setActive((p) => (p < totalPages - 1 ? p + 1 : 0))}
-            className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-violet-50 transition-colors"
+            className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-green-50 transition-colors"
           >
             <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

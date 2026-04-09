@@ -38,7 +38,7 @@ export default async function DashboardPage() {
   }).length;
 
   const stats = [
-    { label: 'Total Revenue', value: `৳ ${totalRevenue.toLocaleString()}`, color: 'from-violet-500 to-purple-600' },
+    { label: 'Total Revenue', value: `৳ ${totalRevenue.toLocaleString()}`, color: 'from-green-500 to-green-600' },
     { label: 'Products', value: productCount || 0, color: 'from-blue-500 to-cyan-500' },
     { label: 'Pending Orders', value: pendingOrders, color: 'from-amber-500 to-orange-500' },
     { label: 'Orders Today', value: todayOrders, color: 'from-emerald-500 to-green-500' },

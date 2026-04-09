@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* ─── BengalStitch Vibrant Light Theme ──────────── */
   --color-background: #ffffff;
   --color-surface: #ffffff;
   --color-surface-dim: #f8f9fa;
@@ -13,22 +12,28 @@
   --color-surface-variant: #f4f0ff;
   --color-surface-bright: #ffffff;
 
-  --color-primary: #6c3ce9;
-  --color-primary-light: #8b5cf6;
-  --color-primary-dark: #5521c6;
-  --color-primary-container: #ede9fe;
+  --color-brand: #2DC44D;
+  --color-brand-light: #4ade80;
+  --color-brand-dark: #16a34a;
+  --color-brand-50: #f0fdf4;
+  --color-brand-100: #dcfce7;
+
+  --color-primary: #2DC44D;
+  --color-primary-light: #4ade80;
+  --color-primary-dark: #16a34a;
+  --color-primary-container: #dcfce7;
   --color-on-primary: #ffffff;
-  --color-on-primary-container: #3b0764;
+  --color-on-primary-container: #14532d;
 
-  --color-secondary: #f43f5e;
-  --color-secondary-light: #fb7185;
-  --color-secondary-container: #fff1f2;
+  --color-secondary: #1a1a2e;
+  --color-secondary-light: #374151;
+  --color-secondary-container: #f3f4f6;
   --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #881337;
+  --color-on-secondary-container: #111827;
 
-  --color-accent: #06b6d4;
-  --color-accent-light: #22d3ee;
-  --color-accent-container: #ecfeff;
+  --color-accent: #2DC44D;
+  --color-accent-light: #4ade80;
+  --color-accent-container: #f0fdf4;
   --color-on-accent: #ffffff;
 
   --color-success: #10b981;
@@ -38,8 +43,8 @@
   --color-warning: #f59e0b;
   --color-warning-container: #fffbeb;
 
-  --color-tertiary: #8b5cf6;
-  --color-tertiary-container: #f5f3ff;
+  --color-tertiary: #2DC44D;
+  --color-tertiary-container: #f0fdf4;
 
   --color-error: #ef4444;
   --color-error-container: #fef2f2;
@@ -50,15 +55,13 @@
   --color-outline: #cbd5e1;
   --color-outline-variant: #e2e8f0;
 
-  --color-gradient-start: #6c3ce9;
-  --color-gradient-mid: #f43f5e;
-  --color-gradient-end: #f59e0b;
+  --color-gradient-start: #2DC44D;
+  --color-gradient-mid: #16a34a;
+  --color-gradient-end: #15803d;
 
-  /* ─── Typography ───────────────────────────── */
   --font-headline: "Plus Jakarta Sans", sans-serif;
   --font-body: "Inter", sans-serif;
 
-  /* ─── Border Radius ────────────────────────── */
   --radius-card: 1.25rem;
   --radius-button: 0.75rem;
 }
@@ -77,40 +80,38 @@
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+    background-color: color-mix(in srgb, var(--color-brand) 20%, transparent);
     color: var(--color-on-background);
   }
 }
 
 @layer components {
   .gradient-text {
-    background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-mid), var(--color-gradient-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-brand);
   }
 
   .gradient-bg {
-    background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-mid));
+    background-color: var(--color-brand);
   }
 
   .gradient-bg-warm {
-    background: linear-gradient(135deg, var(--color-secondary), var(--color-warning));
+    background-color: var(--color-brand-dark);
   }
 
   .gradient-bg-cool {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    background-color: var(--color-brand);
   }
 
   .gradient-cta {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    background-color: var(--color-brand);
     color: white;
     transition: all 0.3s;
   }
 
   .gradient-cta:hover {
-    box-shadow: 0 8px 30px color-mix(in srgb, var(--color-primary) 35%, transparent);
-    transform: translateY(-2px);
+    background-color: var(--color-brand-dark);
+    box-shadow: 0 8px 30px color-mix(in srgb, var(--color-brand) 35%, transparent);
+    transform: translateY(-1px);
   }
 
   .editorial-headline {

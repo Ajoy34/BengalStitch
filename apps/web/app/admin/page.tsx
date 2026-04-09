@@ -17,12 +17,12 @@ export default async function AdminPage() {
   const pendingOrders = (allOrders || []).filter((o) => o.order_status === 'pending').length;
 
   const stats = [
-    { label: 'Total Revenue', value: `৳ ${totalRevenue.toLocaleString()}`, color: 'from-violet-500 to-purple-600' },
+    { label: 'Total Revenue', value: `৳ ${totalRevenue.toLocaleString()}`, color: 'from-green-500 to-green-600' },
     { label: 'Total Users', value: usersCount || 0, color: 'from-blue-500 to-cyan-500' },
     { label: 'Total Orders', value: totalOrders, color: 'from-emerald-500 to-green-500' },
     { label: 'Products', value: productsCount || 0, color: 'from-amber-500 to-orange-500' },
-    { label: 'Stores', value: storesCount || 0, color: 'from-rose-500 to-pink-500' },
-    { label: 'Today Orders', value: todayOrders, color: 'from-indigo-500 to-violet-500' },
+    { label: 'Stores', value: storesCount || 0, color: 'from-green-500 to-pink-500' },
+    { label: 'Today Orders', value: todayOrders, color: 'from-indigo-500 to-green-500' },
     { label: 'Pending Orders', value: pendingOrders, color: 'from-yellow-500 to-amber-500' },
     { label: 'Avg. Order', value: `৳ ${totalOrders ? Math.round(totalRevenue / totalOrders) : 0}`, color: 'from-teal-500 to-emerald-500' },
   ];

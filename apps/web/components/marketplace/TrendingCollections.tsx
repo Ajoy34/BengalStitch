@@ -24,7 +24,7 @@ const COLLECTIONS = [
     slug: 'mothers-day',
     description: 'Perfect gifts for the best mom',
     emoji: '💐',
-    gradient: 'from-pink-400 via-rose-400 to-fuchsia-500',
+    gradient: 'from-pink-400 via-green-400 to-fuchsia-500',
     bgGlow: 'bg-pink-500/20',
     tags: ['mothers-day', 'mom', 'gift', 'love'],
     count: 128,
@@ -44,8 +44,8 @@ const COLLECTIONS = [
     slug: 'lifestyle',
     description: 'Express your daily vibe',
     emoji: '✨',
-    gradient: 'from-violet-400 via-purple-500 to-indigo-500',
-    bgGlow: 'bg-violet-500/20',
+    gradient: 'from-green-400 via-green-500 to-indigo-500',
+    bgGlow: 'bg-green-500/20',
     tags: ['lifestyle', 'aesthetic', 'minimalist', 'vibes'],
     count: 312,
   },
@@ -74,7 +74,7 @@ const COLLECTIONS = [
     slug: 'anime-comics',
     description: 'For otaku & comic lovers',
     emoji: '⚡',
-    gradient: 'from-fuchsia-500 via-pink-500 to-rose-500',
+    gradient: 'from-fuchsia-500 via-pink-500 to-green-500',
     bgGlow: 'bg-fuchsia-500/20',
     tags: ['anime', 'manga', 'comics', 'otaku'],
     count: 198,
@@ -100,8 +100,8 @@ const cardVariants = {
 export function TrendingCollections() {
   return (
     <section className="py-20 px-6 md:px-8 bg-white relative overflow-hidden">
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-100/50 rounded-full blur-3xl -translate-y-1/2" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-rose-100/50 rounded-full blur-3xl translate-y-1/2" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-100/50 rounded-full blur-3xl -translate-y-1/2" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-100/50 rounded-full blur-3xl translate-y-1/2" />
 
       <div className="container mx-auto max-w-7xl relative">
         <div className="text-center mb-14">
@@ -109,7 +109,7 @@ export function TrendingCollections() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-sm font-bold text-violet-600 uppercase tracking-wider mb-3"
+            className="inline-block text-sm font-bold text-green-600 uppercase tracking-wider mb-3"
           >
             Explore Collections
           </motion.span>
@@ -217,7 +217,7 @@ export function TrendingCollections() {
             <Link
               key={tag}
               href={`/marketplace?q=${tag.toLowerCase()}`}
-              className="px-4 py-2 bg-gray-100 hover:bg-violet-100 text-gray-600 hover:text-violet-700 rounded-full text-sm font-medium transition-all hover:-translate-y-0.5"
+              className="px-4 py-2 bg-gray-100 hover:bg-green-100 text-gray-600 hover:text-green-700 rounded-full text-sm font-medium transition-all hover:-translate-y-0.5"
             >
               #{tag}
             </Link>

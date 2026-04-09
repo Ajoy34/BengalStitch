@@ -36,7 +36,7 @@ export function BlogPreview() {
     <section className="py-24 px-6 md:px-8 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Learn & Grow</span>
+          <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Learn & Grow</span>
           <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">
             BengalStitch Makes It Easy
           </h2>
@@ -60,13 +60,13 @@ export function BlogPreview() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="bg-white/90 backdrop-blur-sm text-violet-600 text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="bg-white/90 backdrop-blur-sm text-green-600 text-xs font-bold px-3 py-1 rounded-full">
                     {post.category}
                   </span>
                 </div>
               </div>
               <div className="p-6 space-y-3">
-                <h3 className="font-bold text-gray-900 text-lg group-hover:text-violet-600 transition-colors line-clamp-2">
+                <h3 className="font-bold text-gray-900 text-lg group-hover:text-green-600 transition-colors line-clamp-2">
                   {post.title}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
@@ -83,7 +83,7 @@ export function BlogPreview() {
         <div className="text-center mt-10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-violet-600 font-bold hover:text-violet-800 transition-colors"
+            className="inline-flex items-center gap-2 text-green-600 font-bold hover:text-green-800 transition-colors"
           >
             View More Articles
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

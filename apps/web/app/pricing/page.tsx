@@ -29,9 +29,9 @@ export default function PricingPage() {
       <Header />
       <main className="pt-28 pb-16 min-h-screen">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-violet-50 via-white to-rose-50 px-6 md:px-8 pb-16">
+        <section className="bg-gradient-to-br from-green-50 via-white to-green-50 px-6 md:px-8 pb-16">
           <div className="container mx-auto max-w-5xl text-center">
-            <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Transparent Pricing</span>
+            <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Transparent Pricing</span>
             <h1 className="editorial-headline text-4xl md:text-6xl font-extrabold text-gray-900 mt-3">
               Simple, Honest Pricing
             </h1>
@@ -71,7 +71,7 @@ export default function PricingPage() {
                 </thead>
                 <tbody>
                   {STANDARD_PRODUCTS.map((p) => (
-                    <tr key={p.name} className="border-b border-gray-100 hover:bg-violet-50/50 transition-colors">
+                    <tr key={p.name} className="border-b border-gray-100 hover:bg-green-50/50 transition-colors">
                       <td className="py-4 px-4 font-semibold text-gray-800">{p.name}</td>
                       <td className="py-4 px-4 text-gray-500">{p.base}</td>
                       <td className="py-4 px-4 text-gray-700">{p.sell}</td>
@@ -126,7 +126,7 @@ export default function PricingPage() {
                 { name: 'Silver', sales: '200+', discount: '10%', color: 'bg-gray-100 text-gray-700 border-gray-300' },
                 { name: 'Gold', sales: '500+', discount: '15%', color: 'bg-yellow-100 text-yellow-700 border-yellow-200' },
                 { name: 'Diamond', sales: '1,000+', discount: '20%', color: 'bg-cyan-100 text-cyan-700 border-cyan-200' },
-                { name: 'Platinum', sales: '5,000+', discount: '25%', color: 'bg-violet-100 text-violet-700 border-violet-200' },
+                { name: 'Platinum', sales: '5,000+', discount: '25%', color: 'bg-green-100 text-green-700 border-green-200' },
               ].map((t) => (
                 <div key={t.name} className={`rounded-2xl p-5 border-2 ${t.color} text-center`}>
                   <div className="text-lg font-extrabold">{t.name}</div>
@@ -140,11 +140,11 @@ export default function PricingPage() {
         </section>
 
         {/* CTA */}
-        <section className="px-6 md:px-8 py-16 bg-gradient-to-r from-violet-600 to-rose-500">
+        <section className="px-6 md:px-8 py-16 bg-gradient-to-r from-green-600 to-green-500">
           <div className="container mx-auto max-w-3xl text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold text-white">Ready to Start Earning?</h2>
-            <p className="text-violet-100 mt-3">Create your free store today. No credit card required.</p>
-            <Link href="/signup" className="inline-block mt-8 bg-white text-violet-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-violet-50 transition-colors shadow-xl">
+            <p className="text-green-100 mt-3">Create your free store today. No credit card required.</p>
+            <Link href="/signup" className="inline-block mt-8 bg-white text-green-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-50 transition-colors shadow-xl">
               Start Selling Free
             </Link>
           </div>

@@ -26,13 +26,13 @@ export default async function AffiliatePage() {
       <h1 className="editorial-headline text-2xl font-extrabold text-gray-900 mb-8">Affiliate Program</h1>
 
       {/* Referral link card */}
-      <div className="bg-gradient-to-r from-violet-50 to-rose-50 rounded-2xl p-6 border border-violet-100 mb-8">
+      <div className="bg-gradient-to-r from-green-50 to-green-50 rounded-2xl p-6 border border-green-100 mb-8">
         <p className="font-bold mb-2">Your Referral Link</p>
         <div className="flex items-center gap-3">
           <input
             readOnly
             value={referralLink}
-            className="flex-1 bg-white border border-violet-200 rounded-xl px-4 py-3 text-sm font-mono"
+            className="flex-1 bg-white border border-green-200 rounded-xl px-4 py-3 text-sm font-mono"
           />
           <button className="gradient-cta px-6 py-3 rounded-xl text-sm font-bold whitespace-nowrap">
             Copy Link

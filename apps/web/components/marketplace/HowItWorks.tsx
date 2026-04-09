@@ -6,16 +6,16 @@ const STEPS = [
     number: 1,
     title: 'Sign Up for Free',
     description: 'Create your store in minutes — no upfront costs, no hidden fees. Connect your own domain for a professional branded storefront.',
-    color: 'bg-violet-100 text-violet-600 border-violet-200',
-    accent: 'text-violet-600',
+    color: 'bg-green-100 text-green-600 border-green-200',
+    accent: 'text-green-600',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCSBagkS-atK37gtA9d20BF4oLJ-NfOaCtRTLwkaMPTDX2NQYEHPvS7UqSb8DTj9dWoYGcg_tFoXlcNPIt83b_MLZokEBmxhpiUgco1H-J2q_vlvEmiaXTMxSvq129up-jOZ5Fu-iiVTSFtLXrS8WLtr-HchaKMosGl_oOZYuIUvzZP7juVUH-pwIYD4-kiAqKpFf9RLbK-c-93UceRq746H9-rWz-Yn_SLWzdnKH7Whc0LFCTxEhuaxV-RXmLRJadh5GwwO4zFkg',
   },
   {
     number: 2,
     title: 'Choose Your Products',
     description: 'Pick from 2,700+ premium products. Use our AI Design Studio to create stunning designs or upload your own artwork.',
-    color: 'bg-rose-100 text-rose-600 border-rose-200',
-    accent: 'text-rose-600',
+    color: 'bg-green-100 text-green-600 border-green-200',
+    accent: 'text-green-600',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBhksxVrdsL_Mf9yPmo5VUTo_r8TrINS99vOT_u0f5tohoTDPT3VtNOqpjCZWhf727xbeGrDOsSWuVJ7-DWMAYEuC0dy3eyWVx35ctHly4bG2mSMIKBnmCyec7cR2RnueiJW0DsU-OcgIkVtEfwtursAPrsSbtyqrXMIdlwYk8PbmvIfY-rssZucwibIp-SFYlmC5htaL9zmAC4SqjdXsj27iJZrU_cDzvt9Bimhh5PN2WJdPustaoUAnYrvYxYDFIul9pJ-ZNSVQ',
   },
   {
@@ -41,7 +41,7 @@ export function HowItWorks() {
     <section id="how-it-works" className="py-24 px-6 md:px-8 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Simple Process</span>
+          <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Simple Process</span>
           <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">
             How It Works
           </h2>

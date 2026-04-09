@@ -51,7 +51,7 @@ export default async function AdminAnalyticsPage() {
           {last30Days.map((day, i) => (
             <div key={i} className="flex-1 flex flex-col items-center">
               <div
-                className="w-full bg-gradient-to-t from-violet-500 to-violet-300 rounded-t transition-all"
+                className="w-full bg-gradient-to-t from-green-500 to-green-300 rounded-t transition-all"
                 style={{ height: `${(day.revenue / maxDayRevenue) * 100}%`, minHeight: '1px' }}
               />
             </div>

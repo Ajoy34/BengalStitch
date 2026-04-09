@@ -10,7 +10,7 @@ export default function ContactPage() {
       <main className="pt-28 pb-16 px-6 md:px-8 min-h-screen bg-gray-50">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Get in Touch</span>
+            <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Get in Touch</span>
             <h1 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">Contact Us</h1>
             <p className="text-gray-500 mt-3">We&apos;re here to help. Reach out anytime.</p>
           </div>
@@ -23,20 +23,20 @@ export default function ContactPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">First Name</label>
-                    <input className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-violet-400 focus:border-violet-400 bg-gray-50" placeholder="Rakib" />
+                    <input className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-green-400 focus:border-green-400 bg-gray-50" placeholder="Rakib" />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">Last Name</label>
-                    <input className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-violet-400 focus:border-violet-400 bg-gray-50" placeholder="Hasan" />
+                    <input className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-green-400 focus:border-green-400 bg-gray-50" placeholder="Hasan" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
-                  <input type="email" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-violet-400 focus:border-violet-400 bg-gray-50" placeholder="you@example.com" />
+                  <input type="email" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-green-400 focus:border-green-400 bg-gray-50" placeholder="you@example.com" />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5">Subject</label>
-                  <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-violet-400 focus:border-violet-400 bg-gray-50 text-gray-600">
+                  <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-green-400 focus:border-green-400 bg-gray-50 text-gray-600">
                     <option>General Inquiry</option>
                     <option>Seller Support</option>
                     <option>Buyer Support</option>
@@ -47,7 +47,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5">Message</label>
-                  <textarea rows={5} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-violet-400 focus:border-violet-400 bg-gray-50 resize-none" placeholder="How can we help you?" />
+                  <textarea rows={5} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-green-400 focus:border-green-400 bg-gray-50 resize-none" placeholder="How can we help you?" />
                 </div>
                 <button type="button" className="w-full gradient-cta py-4 rounded-xl font-bold text-lg">Send Message</button>
               </form>
@@ -62,7 +62,7 @@ export default function ContactPage() {
                 { icon: '💬', title: 'Live Chat', lines: ['Available 24/7 on the platform', 'Average response time: 2 minutes', 'Support in English & Bangla'] },
               ].map((info) => (
                 <div key={info.title} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex gap-5">
-                  <div className="w-12 h-12 bg-violet-50 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
+                  <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
                     {info.icon}
                   </div>
                   <div>

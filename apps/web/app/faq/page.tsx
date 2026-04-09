@@ -69,7 +69,7 @@ export default function FaqPage() {
       <main className="pt-28 pb-16 px-6 md:px-8 min-h-screen">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Help Center</span>
+            <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Help Center</span>
             <h1 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">Frequently Asked Questions</h1>
             <p className="text-gray-500 mt-3">Find answers to common questions about BengalStitch</p>
           </div>
@@ -87,7 +87,7 @@ export default function FaqPage() {
             ))}
           </div>
 
-          <div className="mt-16 text-center bg-violet-50 rounded-3xl p-10 border border-violet-100">
+          <div className="mt-16 text-center bg-green-50 rounded-3xl p-10 border border-green-100">
             <h2 className="text-2xl font-bold text-gray-900">Still have questions?</h2>
             <p className="text-gray-500 mt-2">Our support team is available 24/7</p>
             <Link href="/contact" className="inline-block mt-6 gradient-cta px-8 py-3 rounded-xl font-bold">Contact Support</Link>

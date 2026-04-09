@@ -59,7 +59,7 @@ export default async function AnalyticsPage() {
             <div key={day.label} className="flex-1 flex flex-col items-center gap-2">
               <span className="text-xs text-gray-500 font-medium">৳{day.revenue.toLocaleString()}</span>
               <div
-                className="w-full bg-gradient-to-t from-violet-500 to-violet-300 rounded-t-lg transition-all"
+                className="w-full bg-gradient-to-t from-green-500 to-green-300 rounded-t-lg transition-all"
                 style={{ height: `${(day.revenue / maxRevenue) * 100}%`, minHeight: day.revenue > 0 ? '8px' : '2px' }}
               />
               <span className="text-xs text-gray-400">{day.label}</span>

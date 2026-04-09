@@ -196,15 +196,15 @@ function StepIndicator({ step, setStep, canEdit }: { step: Step; setStep: (s: St
             onClick={() => !disabled && setStep(s.key)}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
               active
-                ? 'bg-violet-600 text-white shadow-md shadow-violet-200'
+                ? 'bg-green-600 text-white shadow-md shadow-green-200'
                 : done
-                  ? 'bg-violet-50 text-violet-700 hover:bg-violet-100'
+                  ? 'bg-green-50 text-green-700 hover:bg-green-100'
                   : 'text-gray-400 hover:text-gray-600 disabled:opacity-40'
             }`}
           >
             <span
               className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center ${
-                active ? 'bg-white/20 text-white' : done ? 'bg-violet-200 text-violet-700' : 'bg-gray-100 text-gray-400'
+                active ? 'bg-white/20 text-white' : done ? 'bg-green-200 text-green-700' : 'bg-gray-100 text-gray-400'
               }`}
             >
               {done ? (
@@ -248,6 +248,16 @@ export default function StudioPage() {
   const [rotation, setRotation] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [previewUrl, setPreviewUrl] = useState('');
+
+  // genai
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiGenerating, setAiGenerating] = useState(false);
+
+  // virtual try-on
+  const [tryOnFile, setTryOnFile] = useState<File | null>(null);
+  const [tryOnPreview, setTryOnPreview] = useState('');
+  const [tryOnResult, setTryOnResult] = useState('');
+  const [tryOnLoading, setTryOnLoading] = useState(false);
 
   // publish
   const [productTitle, setProductTitle] = useState('');
@@ -367,6 +377,84 @@ export default function StudioPage() {
     setStep('editor');
   }
 
+  async function handleGenAI() {
+    if (!aiPrompt.trim()) return;
+    setAiGenerating(true);
+    setError('');
+    try {
+      const res = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: aiPrompt }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Generation failed');
+
+      if (data.output) {
+        const imgUrl = Array.isArray(data.output) ? data.output[0] : data.output;
+        setDesignPreview(imgUrl);
+        setDesignFile(null);
+      } else if (data.id) {
+        for (let i = 0; i < 60; i++) {
+          await new Promise((r) => setTimeout(r, 2000));
+          const poll = await fetch(`/api/generate-image/${data.id}`);
+          const pollData = await poll.json();
+          if (pollData.status === 'succeeded' && pollData.output) {
+            const imgUrl = Array.isArray(pollData.output) ? pollData.output[0] : pollData.output;
+            setDesignPreview(imgUrl);
+            setDesignFile(null);
+            break;
+          }
+          if (pollData.status === 'failed') throw new Error('Generation failed');
+        }
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'AI generation failed');
+    }
+    setAiGenerating(false);
+  }
+
+  async function handleTryOn() {
+    if (!tryOnFile || !previewUrl) return;
+    setTryOnLoading(true);
+    setTryOnResult('');
+    setError('');
+    try {
+      const garmentUrl = previewUrl;
+      const formData = new FormData();
+      formData.append('person_image', tryOnFile);
+      formData.append('garment_url', garmentUrl);
+      formData.append('category', 'tops');
+
+      const res = await fetch('/api/tryon', { method: 'POST', body: formData });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Try-on failed');
+
+      for (let i = 0; i < 60; i++) {
+        await new Promise((r) => setTimeout(r, 2000));
+        const poll = await fetch(`/api/tryon/${data.id}`);
+        const pollData = await poll.json();
+        if (pollData.status === 'succeeded' && pollData.output) {
+          const outputUrl = Array.isArray(pollData.output) ? pollData.output[0] : pollData.output;
+          setTryOnResult(outputUrl);
+          break;
+        }
+        if (pollData.status === 'failed') throw new Error('Try-on failed');
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Virtual try-on failed');
+    }
+    setTryOnLoading(false);
+  }
+
+  async function onPickTryOnPhoto(file: File | null) {
+    setTryOnFile(file);
+    setTryOnResult('');
+    if (!file) { setTryOnPreview(''); return; }
+    const url = await toDataUrl(file);
+    setTryOnPreview(url);
+  }
+
   async function handlePublish() {
     if (!user || !selectedItem) return;
     setError('');
@@ -464,7 +552,7 @@ export default function StudioPage() {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center space-y-4">
-          <div className="w-12 h-12 border-4 border-violet-200 border-t-violet-600 rounded-full animate-spin mx-auto" />
+          <div className="w-12 h-12 border-4 border-green-200 border-t-green-600 rounded-full animate-spin mx-auto" />
           <p className="text-gray-500 font-medium">Loading Studio...</p>
         </div>
       </div>
@@ -475,8 +563,8 @@ export default function StudioPage() {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="max-w-md text-center space-y-6">
-          <div className="w-20 h-20 bg-violet-100 rounded-full flex items-center justify-center mx-auto">
-            <svg className="w-10 h-10 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+            <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
             </svg>
           </div>
@@ -539,7 +627,7 @@ export default function StudioPage() {
                 onClick={() => { setActiveCat(c.key); setSearchQuery(''); }}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   activeCat === c.key && !searchQuery
-                    ? 'bg-violet-50 text-violet-700 font-semibold'
+                    ? 'bg-green-50 text-green-700 font-semibold'
                     : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                 }`}
               >
@@ -579,7 +667,7 @@ export default function StudioPage() {
                 placeholder="Search all products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-violet-400 focus:border-violet-400 text-sm"
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-400 focus:border-green-400 text-sm"
               />
             </div>
 
@@ -595,7 +683,7 @@ export default function StudioPage() {
                 <button
                   key={item.key}
                   onClick={() => onSelectProduct(item)}
-                  className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:border-violet-200 transition-all duration-300 text-left"
+                  className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:border-green-200 transition-all duration-300 text-left"
                 >
                   <div className="relative aspect-square bg-gray-50 overflow-hidden">
                     <Image
@@ -606,7 +694,7 @@ export default function StudioPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
-                      <span className="bg-violet-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg">
+                      <span className="bg-green-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg">
                         Start Designing
                       </span>
                     </div>
@@ -614,7 +702,7 @@ export default function StudioPage() {
                   <div className="p-4">
                     <h3 className="font-semibold text-gray-900 text-sm">{item.title}</h3>
                     <div className="flex items-center justify-between mt-2">
-                      <span className="text-violet-600 font-bold text-sm">From ${item.basePrice.toFixed(2)}</span>
+                      <span className="text-green-600 font-bold text-sm">From ${item.basePrice.toFixed(2)}</span>
                       <span className="text-xs text-gray-400">Front + Back</span>
                     </div>
                   </div>
@@ -639,7 +727,7 @@ export default function StudioPage() {
                       key={v}
                       onClick={() => setView(v)}
                       className={`px-5 py-2 rounded-xl text-sm font-bold border transition-all ${
-                        view === v ? 'bg-violet-600 text-white border-violet-600 shadow-md shadow-violet-200' : 'bg-white border-gray-200 text-gray-600 hover:border-violet-300'
+                        view === v ? 'bg-green-600 text-white border-green-600 shadow-md shadow-green-200' : 'bg-white border-gray-200 text-gray-600 hover:border-green-300'
                       }`}
                     >
                       {v === 'front' ? 'Front' : 'Back'}
@@ -662,7 +750,7 @@ export default function StudioPage() {
                 {/* print area overlay */}
                 {!designPreview && (
                   <div
-                    className="absolute border-2 border-dashed border-violet-300 rounded-lg flex items-center justify-center"
+                    className="absolute border-2 border-dashed border-green-300 rounded-lg flex items-center justify-center"
                     style={{
                       left: `${selectedItem.printArea.x * 100}%`,
                       top: `${selectedItem.printArea.y * 100}%`,
@@ -670,7 +758,7 @@ export default function StudioPage() {
                       height: `${selectedItem.printArea.h * 100}%`,
                     }}
                   >
-                    <span className="text-violet-400 text-xs font-semibold bg-white/80 px-2 py-1 rounded">Print Area</span>
+                    <span className="text-green-400 text-xs font-semibold bg-white/80 px-2 py-1 rounded">Print Area</span>
                   </div>
                 )}
               </div>
@@ -685,7 +773,7 @@ export default function StudioPage() {
                     const img = p.mockup_images?.[0] || p.images?.[0];
                     if (!img) return null;
                     return (
-                      <Link key={p.id} href={`/product/${p.slug}`} className="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border border-gray-100 hover:border-violet-300 transition-colors">
+                      <Link key={p.id} href={`/product/${p.slug}`} className="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border border-gray-100 hover:border-green-300 transition-colors">
                         <Image src={img} alt={p.title} width={80} height={80} className="w-full h-full object-cover" />
                       </Link>
                     );
@@ -700,7 +788,7 @@ export default function StudioPage() {
             {/* Upload design */}
             <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-4">
               <h3 className="font-bold text-gray-900">Upload Design</h3>
-              <label className="flex flex-col items-center justify-center h-32 border-2 border-dashed border-gray-200 rounded-xl hover:border-violet-300 hover:bg-violet-50/50 transition-colors cursor-pointer">
+              <label className="flex flex-col items-center justify-center h-32 border-2 border-dashed border-gray-200 rounded-xl hover:border-green-300 hover:bg-green-50/50 transition-colors cursor-pointer">
                 {designPreview ? (
                   <div className="relative w-24 h-24">
                     <Image src={designPreview} alt="Design" fill className="object-contain" />
@@ -733,7 +821,7 @@ export default function StudioPage() {
                     onClick={() => setSelectedColor(c)}
                     title={c.name}
                     className={`w-8 h-8 rounded-full transition-all ${
-                      selectedColor.name === c.name ? 'ring-2 ring-violet-500 ring-offset-2 scale-110' : 'hover:scale-110'
+                      selectedColor.name === c.name ? 'ring-2 ring-green-500 ring-offset-2 scale-110' : 'hover:scale-110'
                     } ${c.border ? 'border border-gray-300' : ''}`}
                     style={{ backgroundColor: c.hex }}
                   />
@@ -751,13 +839,96 @@ export default function StudioPage() {
                 max="180"
                 value={rotation}
                 onChange={(e) => setRotation(parseInt(e.target.value))}
-                className="w-full accent-violet-600"
+                className="w-full accent-green-600"
               />
               <div className="flex justify-between text-xs text-gray-400">
                 <span>-180&deg;</span>
-                <span className="font-semibold text-violet-600">{rotation}&deg;</span>
+                <span className="font-semibold text-green-600">{rotation}&deg;</span>
                 <span>180&deg;</span>
               </div>
+            </div>
+
+            {/* GenAI Design Generator */}
+            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+                </svg>
+                <h3 className="font-bold text-gray-900">AI Design Generator</h3>
+              </div>
+              <p className="text-xs text-gray-500">Describe the design you want and AI will generate it for you.</p>
+              <textarea
+                placeholder="e.g. A minimalist mountain landscape with sunset colors, vector style..."
+                value={aiPrompt}
+                onChange={(e) => setAiPrompt(e.target.value)}
+                rows={3}
+                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-400 focus:border-green-400 resize-none"
+              />
+              <button
+                onClick={handleGenAI}
+                disabled={aiGenerating || !aiPrompt.trim()}
+                className="w-full bg-gray-900 hover:bg-gray-800 text-white py-2.5 rounded-xl font-semibold text-sm disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+              >
+                {aiGenerating ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Generating...
+                  </>
+                ) : (
+                  'Generate with AI'
+                )}
+              </button>
+            </div>
+
+            {/* Virtual Try-On */}
+            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+                <h3 className="font-bold text-gray-900">Virtual Try-On</h3>
+              </div>
+              <p className="text-xs text-gray-500">Upload a full-body photo to see how this product looks on you.</p>
+              <label className="flex flex-col items-center justify-center h-24 border-2 border-dashed border-gray-200 rounded-xl hover:border-green-300 hover:bg-green-50/50 transition-colors cursor-pointer">
+                {tryOnPreview ? (
+                  <div className="relative w-16 h-16">
+                    <Image src={tryOnPreview} alt="Your photo" fill className="object-cover rounded-lg" />
+                  </div>
+                ) : (
+                  <>
+                    <svg className="w-6 h-6 text-gray-400 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
+                    </svg>
+                    <span className="text-xs text-gray-500">Upload your photo</span>
+                  </>
+                )}
+                <input type="file" accept="image/*" onChange={(e) => onPickTryOnPhoto(e.target.files?.[0] || null)} className="hidden" />
+              </label>
+              <button
+                onClick={handleTryOn}
+                disabled={tryOnLoading || !tryOnFile || !designPreview}
+                className="w-full bg-gray-900 hover:bg-gray-800 text-white py-2.5 rounded-xl font-semibold text-sm disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+              >
+                {tryOnLoading ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  'Try It On'
+                )}
+              </button>
+              {tryOnResult && (
+                <div className="rounded-xl overflow-hidden border border-gray-100">
+                  <Image src={tryOnResult} alt="Try-on result" width={360} height={480} className="w-full h-auto object-contain" />
+                  <div className="p-2 bg-gray-50 text-center">
+                    <a href={tryOnResult} download={`bengalstitch-tryon-${Date.now()}.jpg`} className="text-xs font-semibold text-green-600 hover:underline">
+                      Download Result
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Actions */}
@@ -791,9 +962,9 @@ export default function StudioPage() {
                 <div className="text-xs text-gray-500">Base Cost</div>
                 <div className="font-bold text-gray-900">${selectedItem.basePrice.toFixed(2)}</div>
               </div>
-              <div className="flex-1 bg-violet-50 rounded-xl p-3 text-center">
-                <div className="text-xs text-violet-600">Your Profit</div>
-                <div className="font-bold text-violet-700">${(sellPrice - selectedItem.basePrice).toFixed(2)}</div>
+              <div className="flex-1 bg-green-50 rounded-xl p-3 text-center">
+                <div className="text-xs text-green-600">Your Profit</div>
+                <div className="font-bold text-green-700">${(sellPrice - selectedItem.basePrice).toFixed(2)}</div>
               </div>
               <div className="flex-1 bg-green-50 rounded-xl p-3 text-center">
                 <div className="text-xs text-green-600">Sell Price</div>
@@ -813,13 +984,13 @@ export default function StudioPage() {
                   type="text"
                   value={productTitle}
                   onChange={(e) => setProductTitle(e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-violet-400 focus:border-violet-400"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-green-400 focus:border-green-400"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Sell Price: <span className="text-violet-600">${sellPrice.toFixed(2)}</span>
+                  Sell Price: <span className="text-green-600">${sellPrice.toFixed(2)}</span>
                 </label>
                 <input
                   type="range"
@@ -827,7 +998,7 @@ export default function StudioPage() {
                   max={200}
                   value={sellPrice}
                   onChange={(e) => setSellPrice(Number(e.target.value))}
-                  className="w-full accent-violet-600"
+                  className="w-full accent-green-600"
                 />
                 <div className="flex justify-between text-xs text-gray-400 mt-1">
                   <span>Min ${(Math.ceil(selectedItem.basePrice) + 1).toFixed(2)}</span>

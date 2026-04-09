@@ -43,7 +43,7 @@ export default async function StorePage({ params }: Props) {
       <Header />
       <main className="pt-20 min-h-screen bg-gray-50">
         {/* Store banner */}
-        <div className="relative h-48 md:h-64 bg-gradient-to-r from-violet-600 to-rose-500">
+        <div className="relative h-48 md:h-64 bg-gradient-to-r from-green-600 to-green-500">
           {store.banner_url && (
             <Image src={store.banner_url} alt="Banner" fill className="object-cover" />
           )}
@@ -75,8 +75,8 @@ export default async function StorePage({ params }: Props) {
                     <Image src={img} alt={p.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold text-gray-800 text-sm group-hover:text-violet-600 transition-colors truncate">{p.title}</h3>
-                    <span className="font-bold text-violet-600 text-sm">৳ {Number(p.sell_price).toLocaleString()}</span>
+                    <h3 className="font-semibold text-gray-800 text-sm group-hover:text-green-600 transition-colors truncate">{p.title}</h3>
+                    <span className="font-bold text-green-600 text-sm">৳ {Number(p.sell_price).toLocaleString()}</span>
                   </div>
                 </Link>
               );

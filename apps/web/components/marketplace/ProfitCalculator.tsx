@@ -69,7 +69,7 @@ export function ProfitCalculator() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left — info */}
           <div className="space-y-6">
-            <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Transparent Pricing</span>
+            <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Transparent Pricing</span>
             <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900">
               Profit Calculator
             </h2>
@@ -78,12 +78,12 @@ export function ProfitCalculator() {
               and see your profit margin in real time. The processing fee is only 7% of profit.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="bg-violet-50 rounded-2xl p-5 border border-violet-100">
-                <div className="text-3xl font-extrabold text-violet-600">80%</div>
+              <div className="bg-green-50 rounded-2xl p-5 border border-green-100">
+                <div className="text-3xl font-extrabold text-green-600">80%</div>
                 <div className="text-sm text-gray-600 mt-1">Seller Gets</div>
               </div>
-              <div className="bg-rose-50 rounded-2xl p-5 border border-rose-100">
-                <div className="text-3xl font-extrabold text-rose-600">10%</div>
+              <div className="bg-green-50 rounded-2xl p-5 border border-green-100">
+                <div className="text-3xl font-extrabold text-green-600">10%</div>
                 <div className="text-sm text-gray-600 mt-1">Affiliate Commission</div>
               </div>
               <div className="bg-cyan-50 rounded-2xl p-5 border border-cyan-100">
@@ -107,7 +107,7 @@ export function ProfitCalculator() {
                   onClick={() => { setCategory(cat.key); setSelectedProduct(0); }}
                   className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
                     category === cat.key
-                      ? 'bg-violet-600 text-white shadow-md'
+                      ? 'bg-green-600 text-white shadow-md'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
@@ -122,7 +122,7 @@ export function ProfitCalculator() {
               <select
                 value={selectedProduct}
                 onChange={(e) => setSelectedProduct(Number(e.target.value))}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:ring-2 focus:ring-violet-400 focus:border-violet-400 bg-gray-50"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:ring-2 focus:ring-green-400 focus:border-green-400 bg-gray-50"
               >
                 {products.map((p, i) => (
                   <option key={p.name} value={i}>{p.icon} {p.name}</option>
@@ -140,7 +140,7 @@ export function ProfitCalculator() {
                     onClick={() => setTier(i)}
                     className={`py-2 rounded-lg text-sm font-semibold transition-all ${
                       tier === i
-                        ? 'bg-violet-600 text-white shadow-md'
+                        ? 'bg-green-600 text-white shadow-md'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                   >
@@ -153,7 +153,7 @@ export function ProfitCalculator() {
             {/* Sell price */}
             <div className="mb-8">
               <label className="text-sm font-semibold text-gray-700 mb-2 block">
-                You sell it for: <span className="text-violet-600">${sellPrice.toFixed(2)}</span>
+                You sell it for: <span className="text-green-600">${sellPrice.toFixed(2)}</span>
               </label>
               <input
                 type="range"
@@ -161,7 +161,7 @@ export function ProfitCalculator() {
                 max={100}
                 value={sellPrice}
                 onChange={(e) => setSellPrice(Number(e.target.value))}
-                className="w-full h-2 rounded-lg appearance-none bg-gray-200 accent-violet-600"
+                className="w-full h-2 rounded-lg appearance-none bg-gray-200 accent-green-600"
               />
               <div className="flex justify-between text-xs text-gray-400 mt-1">
                 <span>${(Math.ceil(calculation.baseCost) + 1).toFixed(2)}</span>

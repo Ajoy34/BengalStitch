@@ -27,12 +27,12 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 const COLLECTIONS = [
   { slug: 'hot-trendy', name: 'Hot Trendy', emoji: '🔥', gradient: 'from-orange-500 to-red-500' },
-  { slug: 'mothers-day', name: "Mother's Day", emoji: '💐', gradient: 'from-pink-400 to-rose-500' },
+  { slug: 'mothers-day', name: "Mother's Day", emoji: '💐', gradient: 'from-pink-400 to-green-500' },
   { slug: 'earth-day', name: 'Earth Day', emoji: '🌍', gradient: 'from-emerald-400 to-teal-500' },
-  { slug: 'lifestyle', name: 'Lifestyle', emoji: '✨', gradient: 'from-violet-400 to-indigo-500' },
+  { slug: 'lifestyle', name: 'Lifestyle', emoji: '✨', gradient: 'from-green-400 to-indigo-500' },
   { slug: 'gaming', name: 'Gaming', emoji: '🎮', gradient: 'from-blue-500 to-cyan-500' },
   { slug: 'funny', name: 'Funny', emoji: '😂', gradient: 'from-yellow-400 to-orange-500' },
-  { slug: 'anime-comics', name: 'Anime & Comics', emoji: '⚡', gradient: 'from-fuchsia-500 to-rose-500' },
+  { slug: 'anime-comics', name: 'Anime & Comics', emoji: '⚡', gradient: 'from-green-500 to-green-500' },
 ];
 
 const COLLECTION_TAGS: Record<string, string[]> = {
@@ -148,7 +148,7 @@ export default async function MarketplacePage({ searchParams }: { searchParams: 
                 name="q"
                 defaultValue={search}
                 placeholder="Search products, creators, tags..."
-                className="w-full bg-white border border-gray-200 rounded-xl pl-12 pr-6 py-4 text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-violet-400 transition-all"
+                className="w-full bg-white border border-gray-200 rounded-xl pl-12 pr-6 py-4 text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all"
               />
             </form>
             <div className="flex gap-2 overflow-x-auto pb-1">
@@ -158,8 +158,8 @@ export default async function MarketplacePage({ searchParams }: { searchParams: 
                   href={`/marketplace?cat=${cat}${search ? `&q=${search}` : ''}`}
                   className={`px-5 py-3 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
                     category === cat
-                      ? 'bg-violet-600 text-white shadow-md'
-                      : 'bg-white text-gray-600 border border-gray-200 hover:border-violet-300'
+                      ? 'bg-green-600 text-white shadow-md'
+                      : 'bg-white text-gray-600 border border-gray-200 hover:border-green-300'
                   }`}
                 >
                   {CATEGORY_LABELS[cat] || cat}
@@ -182,7 +182,7 @@ export default async function MarketplacePage({ searchParams }: { searchParams: 
                   key={s.value}
                   href={`/marketplace?cat=${category}&sort=${s.value}${search ? `&q=${search}` : ''}`}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                    sort === s.value ? 'bg-violet-100 text-violet-700' : 'text-gray-500 hover:bg-gray-100'
+                    sort === s.value ? 'bg-green-100 text-green-700' : 'text-gray-500 hover:bg-gray-100'
                   }`}
                 >
                   {s.label}
@@ -200,16 +200,16 @@ export default async function MarketplacePage({ searchParams }: { searchParams: 
                   <div className="relative aspect-[4/5] overflow-hidden">
                     <Image src={img} alt={p.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute top-3 left-3">
-                      <span className="bg-white/90 backdrop-blur-sm text-xs font-bold text-violet-600 px-2.5 py-1 rounded-full">{p.category}</span>
+                      <span className="bg-white/90 backdrop-blur-sm text-xs font-bold text-green-600 px-2.5 py-1 rounded-full">{p.category}</span>
                     </div>
                     <div className="absolute top-3 right-3">
                       <span className="bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">Earn 10%</span>
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold text-gray-800 text-sm group-hover:text-violet-600 transition-colors truncate">{p.title}</h3>
+                    <h3 className="font-semibold text-gray-800 text-sm group-hover:text-green-600 transition-colors truncate">{p.title}</h3>
                     <div className="flex items-center justify-between mt-2">
-                      <span className="font-bold text-violet-600">৳ {Number(p.sell_price).toLocaleString()}</span>
+                      <span className="font-bold text-green-600">৳ {Number(p.sell_price).toLocaleString()}</span>
                       <span className="text-xs text-gray-400">{p.total_sold} sold</span>
                     </div>
                   </div>
@@ -233,7 +233,7 @@ export default async function MarketplacePage({ searchParams }: { searchParams: 
                   key={p}
                   href={`/marketplace?cat=${category}&sort=${sort}&page=${p}${search ? `&q=${search}` : ''}`}
                   className={`w-10 h-10 rounded-lg flex items-center justify-center text-sm font-semibold transition-all ${
-                    p === page ? 'bg-violet-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:border-violet-300'
+                    p === page ? 'bg-green-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:border-green-300'
                   }`}
                 >
                   {p}

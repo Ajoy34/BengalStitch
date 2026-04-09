@@ -41,7 +41,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10 mb-16">
           <div className="col-span-2">
             <div className="text-2xl font-extrabold font-[family-name:var(--font-headline)] mb-4">
-              <span className="bg-gradient-to-r from-violet-400 to-rose-400 bg-clip-text text-transparent">BengalStitch</span>
+              <span className="text-green-400">BengalStitch</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
               One stop shop for on-demand products. High quality selection, low risk,
@@ -62,7 +62,7 @@ export function Footer() {
                 <a
                   key={s.label}
                   href={s.href}
-                  className="w-9 h-9 bg-gray-800 hover:bg-violet-600 rounded-lg flex items-center justify-center transition-colors"
+                  className="w-9 h-9 bg-gray-800 hover:bg-green-600 rounded-lg flex items-center justify-center transition-colors"
                   aria-label={s.label}
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">

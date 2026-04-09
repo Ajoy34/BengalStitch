@@ -35,7 +35,7 @@ export default function BlogPage() {
         <section className="px-6 md:px-8 pb-16">
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-12">
-              <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Resources</span>
+              <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Resources</span>
               <h1 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">BengalStitch Blog</h1>
               <p className="text-gray-500 mt-3 max-w-xl mx-auto">Tips, guides, and strategies to grow your print-on-demand business</p>
             </div>
@@ -43,7 +43,7 @@ export default function BlogPage() {
             {/* Category filter */}
             <div className="flex flex-wrap justify-center gap-2 mb-12">
               {CATEGORIES.map((c, i) => (
-                <button key={c} className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${i === 0 ? 'bg-violet-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>{c}</button>
+                <button key={c} className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${i === 0 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>{c}</button>
               ))}
             </div>
 
@@ -53,11 +53,11 @@ export default function BlogPage() {
                 <div className="relative aspect-[16/10] md:aspect-auto">
                   <Image src={FEATURED.image} alt={FEATURED.title} fill className="object-cover" />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-violet-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">Featured</span>
+                    <span className="bg-green-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">Featured</span>
                   </div>
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <span className="text-violet-600 text-sm font-bold">{FEATURED.category}</span>
+                  <span className="text-green-600 text-sm font-bold">{FEATURED.category}</span>
                   <h2 className="editorial-headline text-2xl md:text-3xl font-extrabold text-gray-900 mt-2">{FEATURED.title}</h2>
                   <p className="text-gray-500 mt-4 leading-relaxed">{FEATURED.excerpt}</p>
                   <div className="flex items-center gap-3 mt-6 text-sm text-gray-400">
@@ -67,7 +67,7 @@ export default function BlogPage() {
                     <span>&bull;</span>
                     <span>{FEATURED.readTime}</span>
                   </div>
-                  <Link href="#" className="inline-flex items-center gap-2 text-violet-600 font-bold mt-6 hover:underline">
+                  <Link href="#" className="inline-flex items-center gap-2 text-green-600 font-bold mt-6 hover:underline">
                     Read Article
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                   </Link>
@@ -82,11 +82,11 @@ export default function BlogPage() {
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute top-3 left-3">
-                      <span className="bg-white/90 backdrop-blur-sm text-violet-600 text-xs font-bold px-3 py-1 rounded-full">{post.category}</span>
+                      <span className="bg-white/90 backdrop-blur-sm text-green-600 text-xs font-bold px-3 py-1 rounded-full">{post.category}</span>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="font-bold text-gray-900 text-lg group-hover:text-violet-600 transition-colors">{post.title}</h3>
+                    <h3 className="font-bold text-gray-900 text-lg group-hover:text-green-600 transition-colors">{post.title}</h3>
                     <p className="text-gray-500 text-sm mt-2 line-clamp-2">{post.excerpt}</p>
                     <div className="flex items-center gap-3 mt-4 text-xs text-gray-400">
                       <span className="font-medium text-gray-600">{post.author}</span>

@@ -9,7 +9,7 @@ const FEATURES = [
     ),
     title: 'ZERO Startup Cost',
     description: 'Start selling without spending a single taka. No inventory, no risk — just pure creative potential.',
-    color: 'bg-violet-50 text-violet-600 border-violet-200',
+    color: 'bg-green-50 text-green-600 border-green-200',
   },
   {
     icon: (
@@ -19,7 +19,7 @@ const FEATURES = [
     ),
     title: 'Quality Products',
     description: 'Over 2,700+ premium product SKUs. From apparel to home decor — the largest POD catalog in Bangladesh.',
-    color: 'bg-rose-50 text-rose-600 border-rose-200',
+    color: 'bg-green-50 text-green-600 border-green-200',
   },
   {
     icon: (
@@ -88,7 +88,7 @@ export function WhyChoose() {
     <section className="py-24 px-6 md:px-8 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Our Advantages</span>
+          <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Our Advantages</span>
           <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">
             Why Choose BengalStitch?
           </h2>
@@ -102,7 +102,7 @@ export function WhyChoose() {
           {FEATURES.map((feat) => (
             <div
               key={feat.title}
-              className="group bg-white rounded-2xl p-6 border border-gray-100 hover:border-violet-200 hover:shadow-lg transition-all duration-300"
+              className="group bg-white rounded-2xl p-6 border border-gray-100 hover:border-green-200 hover:shadow-lg transition-all duration-300"
             >
               <div className={`w-14 h-14 rounded-2xl ${feat.color} border flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
                 {feat.icon}
@@ -117,7 +117,7 @@ export function WhyChoose() {
           <Link href="/signup" className="gradient-cta inline-block px-8 py-4 rounded-xl font-bold text-lg">
             Create a Product
           </Link>
-          <Link href="/signup" className="inline-block px-8 py-4 rounded-xl font-bold text-lg border-2 border-violet-200 text-violet-700 hover:bg-violet-50 transition-colors">
+          <Link href="/signup" className="inline-block px-8 py-4 rounded-xl font-bold text-lg border-2 border-green-200 text-green-700 hover:bg-green-50 transition-colors">
             Start Selling
           </Link>
         </div>

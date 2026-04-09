@@ -23,9 +23,9 @@ export default function AboutPage() {
     <>
       <Header />
       <main className="pt-28 pb-16 min-h-screen">
-        <section className="px-6 md:px-8 pb-16 bg-gradient-to-br from-violet-50 via-white to-rose-50">
+        <section className="px-6 md:px-8 pb-16 bg-gradient-to-br from-green-50 via-white to-green-50">
           <div className="container mx-auto max-w-4xl text-center">
-            <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Our Story</span>
+            <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Our Story</span>
             <h1 className="editorial-headline text-4xl md:text-6xl font-extrabold text-gray-900 mt-3">
               Empowering Bangladeshi Creators to Sell Globally
             </h1>

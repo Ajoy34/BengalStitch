@@ -54,7 +54,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         <div className="p-4 border-t border-gray-100">
           <div className="flex items-center gap-3 px-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-500 to-rose-500 flex items-center justify-center text-white text-xs font-bold">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-green-500 flex items-center justify-center text-white text-xs font-bold">
               {user?.email?.charAt(0).toUpperCase() || 'U'}
             </div>
             <div className="min-w-0">

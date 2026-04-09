@@ -1,8 +1,8 @@
 'use client';
 
 const STATS = [
-  { value: '2,700+', label: 'Product SKUs To Customize', color: 'text-violet-600' },
-  { value: '8K+', label: 'Partner Merchants', color: 'text-rose-600' },
+  { value: '2,700+', label: 'Product SKUs To Customize', color: 'text-green-600' },
+  { value: '8K+', label: 'Partner Merchants', color: 'text-green-600' },
   { value: '500K+', label: 'Items Sold', color: 'text-cyan-600' },
 ];
 
@@ -19,11 +19,11 @@ const COUNTRIES = [
 
 export function GlobalReach() {
   return (
-    <section className="py-24 px-6 md:px-8 bg-gradient-to-b from-violet-50 to-white overflow-hidden">
+    <section className="py-24 px-6 md:px-8 bg-gradient-to-b from-green-50 to-white overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         {/* Decade stats */}
         <div className="text-center mb-16">
-          <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Global Presence</span>
+          <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Global Presence</span>
           <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">
             Empowering Dreams Worldwide
           </h2>
@@ -48,7 +48,7 @@ export function GlobalReach() {
               Merchants worldwide rely on us to deliver customer satisfaction globally.
             </p>
             {/* Styled map representation using dots */}
-            <div className="relative aspect-[2/1] bg-gradient-to-br from-violet-50 to-cyan-50 rounded-2xl overflow-hidden">
+            <div className="relative aspect-[2/1] bg-gradient-to-br from-green-50 to-cyan-50 rounded-2xl overflow-hidden">
               <svg viewBox="0 0 800 400" className="w-full h-full" fill="none">
                 {/* Simplified world map dots */}
                 {/* North America */}
@@ -103,12 +103,12 @@ export function GlobalReach() {
                     <div className="text-sm text-gray-500">{c.partners} partners</div>
                   </div>
                   <div className="text-right">
-                    <div className="text-lg font-bold text-violet-600">{c.percent}</div>
+                    <div className="text-lg font-bold text-green-600">{c.percent}</div>
                   </div>
                   {/* Progress bar */}
                   <div className="w-24 h-2 bg-gray-100 rounded-full overflow-hidden hidden sm:block">
                     <div
-                      className="h-full bg-gradient-to-r from-violet-500 to-rose-500 rounded-full"
+                      className="h-full bg-gradient-to-r from-green-500 to-green-500 rounded-full"
                       style={{ width: c.percent }}
                     />
                   </div>

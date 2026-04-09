@@ -49,7 +49,7 @@ export function ProductShowcase() {
     <section className="py-24 px-6 md:px-8 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
-          <span className="text-sm font-bold text-violet-600 uppercase tracking-wider">Product Catalog</span>
+          <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Product Catalog</span>
           <h2 className="editorial-headline text-4xl md:text-5xl font-extrabold text-gray-900 mt-3">
             Start Selling Today!
           </h2>
@@ -64,8 +64,8 @@ export function ProductShowcase() {
               onClick={() => setActiveTab(tab.key)}
               className={`px-6 py-3 rounded-full font-semibold text-sm transition-all ${
                 activeTab === tab.key
-                  ? 'bg-violet-600 text-white shadow-lg shadow-violet-200'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-violet-300'
+                  ? 'bg-green-600 text-white shadow-lg shadow-green-200'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:border-green-300'
               }`}
             >
               {tab.label}
@@ -88,13 +88,13 @@ export function ProductShowcase() {
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <button className="absolute bottom-3 left-3 right-3 bg-white/90 backdrop-blur-sm text-violet-700 font-bold py-2 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                <button className="absolute bottom-3 left-3 right-3 bg-white/90 backdrop-blur-sm text-green-700 font-bold py-2 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
                   Customize
                 </button>
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-gray-800 text-sm truncate">{product.name}</h3>
-                <div className="text-violet-600 font-bold mt-1">From {product.price}</div>
+                <div className="text-green-600 font-bold mt-1">From {product.price}</div>
               </div>
             </div>
           ))}

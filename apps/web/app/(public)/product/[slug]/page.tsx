@@ -57,9 +57,9 @@ export default async function ProductDetailPage({ params }: Props) {
       <main className="pt-28 pb-16 px-6 md:px-8 min-h-screen bg-gray-50">
         <div className="container mx-auto max-w-7xl">
           <nav className="text-sm text-gray-400 mb-6 flex items-center gap-2">
-            <Link href="/" className="hover:text-violet-600">Home</Link>
+            <Link href="/" className="hover:text-green-600">Home</Link>
             <span>/</span>
-            <Link href="/marketplace" className="hover:text-violet-600">Marketplace</Link>
+            <Link href="/marketplace" className="hover:text-green-600">Marketplace</Link>
             <span>/</span>
             <span className="text-gray-600">{product.title}</span>
           </nav>
@@ -73,7 +73,7 @@ export default async function ProductDetailPage({ params }: Props) {
               {images.length > 1 && (
                 <div className="grid grid-cols-4 gap-3">
                   {images.map((img: string, i: number) => (
-                    <div key={i} className={`aspect-square bg-white rounded-xl overflow-hidden border-2 cursor-pointer transition-all ${i === 0 ? 'border-violet-500' : 'border-gray-100 hover:border-violet-300'}`}>
+                    <div key={i} className={`aspect-square bg-white rounded-xl overflow-hidden border-2 cursor-pointer transition-all ${i === 0 ? 'border-green-500' : 'border-gray-100 hover:border-green-300'}`}>
                       <Image src={img} alt={`${product.title} view ${i + 1}`} width={150} height={150} className="w-full h-full object-cover" />
                     </div>
                   ))}
@@ -84,7 +84,7 @@ export default async function ProductDetailPage({ params }: Props) {
             {/* Product Info */}
             <div className="space-y-6">
               <div>
-                <span className="inline-block bg-violet-100 text-violet-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                <span className="inline-block bg-green-100 text-green-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
                   {product.category}
                 </span>
                 <h1 className="editorial-headline text-3xl md:text-4xl font-extrabold text-gray-900 mt-3">
@@ -112,7 +112,7 @@ export default async function ProductDetailPage({ params }: Props) {
                   <h3 className="text-sm font-bold text-gray-700 mb-3">Size</h3>
                   <div className="flex flex-wrap gap-2">
                     {sizes.map((size: string, i: number) => (
-                      <button key={size} className={`min-w-[48px] h-12 px-4 rounded-xl text-sm font-bold transition-all ${i === 1 ? 'bg-violet-600 text-white shadow-md' : 'bg-white border border-gray-200 text-gray-700 hover:border-violet-300'}`}>
+                      <button key={size} className={`min-w-[48px] h-12 px-4 rounded-xl text-sm font-bold transition-all ${i === 1 ? 'bg-green-600 text-white shadow-md' : 'bg-white border border-gray-200 text-gray-700 hover:border-green-300'}`}>
                         {size}
                       </button>
                     ))}
@@ -126,7 +126,7 @@ export default async function ProductDetailPage({ params }: Props) {
                   <h3 className="text-sm font-bold text-gray-700 mb-3">Color</h3>
                   <div className="flex gap-3">
                     {colors.map((color: string, i: number) => (
-                      <button key={color} className={`w-10 h-10 rounded-full border-2 transition-all ${i === 0 ? 'border-violet-500 ring-2 ring-violet-200' : 'border-gray-200 hover:border-violet-300'}`} style={{ backgroundColor: color }} />
+                      <button key={color} className={`w-10 h-10 rounded-full border-2 transition-all ${i === 0 ? 'border-green-500 ring-2 ring-green-200' : 'border-gray-200 hover:border-green-300'}`} style={{ backgroundColor: color }} />
                     ))}
                   </div>
                 </div>
