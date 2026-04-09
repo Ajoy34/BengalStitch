@@ -4,11 +4,14 @@ import Link from 'next/link';
 import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { safeAuthRedirect } from '@/lib/supabase/env';
 
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get('redirect') || '/dashboard';
+  const redirect = safeAuthRedirect(searchParams.get('redirect'), '/dashboard');
+  const callbackError = searchParams.get('error');
+  const callbackMessage = searchParams.get('message');
   const supabase = createClient();
 
   const [email, setEmail] = useState('');
@@ -34,11 +37,22 @@ function LoginForm() {
   }
 
   async function handleGoogleLogin() {
-    await supabase.auth.signInWithOAuth({
+    const { error: oAuthError } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/auth/callback?redirect=${redirect}` },
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirect)}`,
+      },
     });
+    if (oAuthError) setError(oAuthError.message);
   }
+
+  const bannerError =
+    error ||
+    (callbackError === 'auth_callback' && callbackMessage
+      ? `Sign-in failed: ${callbackMessage}`
+      : callbackError
+        ? 'Something went wrong during sign-in. Try again.'
+        : '');
 
   return (
     <div className="w-full max-w-md space-y-8 bg-white p-10 rounded-3xl card-shadow">
@@ -50,8 +64,8 @@ function LoginForm() {
         <p className="text-on-surface-variant mt-2">Sign in to your account</p>
       </div>
 
-      {error && (
-        <div className="bg-error-container text-error text-sm px-4 py-3 rounded-xl">{error}</div>
+      {bannerError && (
+        <div className="bg-error-container text-error text-sm px-4 py-3 rounded-xl">{bannerError}</div>
       )}
 
       <form className="space-y-4" onSubmit={handleSubmit}>
@@ -107,6 +121,7 @@ function LoginForm() {
       </div>
 
       <button
+        type="button"
         onClick={handleGoogleLogin}
         className="w-full border border-outline/40 py-3 rounded-xl font-medium hover:border-primary/40 transition-colors flex items-center justify-center gap-3"
       >
@@ -121,7 +136,9 @@ function LoginForm() {
 
       <p className="text-center text-sm text-on-surface-variant">
         Don&apos;t have an account?{' '}
-        <Link href="/signup" className="text-primary font-semibold hover:underline">Create free store</Link>
+        <Link href="/signup?role=seller&intent=store" className="text-primary font-semibold hover:underline">
+          Create free store
+        </Link>
       </p>
     </div>
   );

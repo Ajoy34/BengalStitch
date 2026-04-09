@@ -77,7 +77,7 @@ export function Header() {
         <div className="container mx-auto max-w-7xl flex items-center justify-between px-6 md:px-8 py-2.5">
           <div className="flex items-center gap-6">
             <Link
-              href="/signup?role=seller"
+              href="/signup?role=seller&intent=store"
               className="flex items-center gap-2 text-sm font-semibold hover:text-green-400 transition-colors"
             >
               <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
