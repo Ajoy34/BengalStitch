@@ -44,7 +44,9 @@ export default async function ProductDetailPage({ params }: Props) {
     notFound();
   }
 
-  const images: string[] = (product.images as string[])?.length ? product.images : FALLBACK_IMAGES;
+  const baseImages: string[] = (product.images as string[])?.length ? product.images : FALLBACK_IMAGES;
+  const mockups: string[] = ((product.mockup_images as string[]) || []).filter(Boolean);
+  const images: string[] = mockups.length ? [...mockups, ...baseImages] : baseImages;
   const sizes: string[] = (product.sizes as string[]) || ['S', 'M', 'L', 'XL'];
   const colors: string[] = (product.colors as string[]) || [];
   const store = product.stores as { store_name: string; store_slug: string; logo_url: string | null } | null;

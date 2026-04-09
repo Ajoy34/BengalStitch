@@ -3,6 +3,7 @@ import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/marketplace/HeroSection';
 import { CategoryBar } from '@/components/marketplace/CategoryBar';
 import { TrendingCollections } from '@/components/marketplace/TrendingCollections';
+import { FeaturedProducts } from '@/components/marketplace/FeaturedProducts';
 import { HowItWorks } from '@/components/marketplace/HowItWorks';
 import { ProductShowcase } from '@/components/marketplace/ProductShowcase';
 import { IntegrationBar } from '@/components/marketplace/IntegrationBar';
@@ -13,6 +14,8 @@ import { GlobalReach } from '@/components/marketplace/GlobalReach';
 import { BlogPreview } from '@/components/marketplace/BlogPreview';
 import { FinalCTA } from '@/components/marketplace/FinalCTA';
 
+export const dynamic = 'force-dynamic';
+
 export default function LandingPage() {
   return (
     <>
@@ -21,6 +24,7 @@ export default function LandingPage() {
         <HeroSection />
         <CategoryBar />
         <TrendingCollections />
+        <FeaturedProducts />
         <HowItWorks />
         <ProductShowcase />
         <IntegrationBar />

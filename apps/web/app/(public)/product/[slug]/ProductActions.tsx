@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { VirtualTryOnButton } from '@/components/tryon/VirtualTryOnButton';
 import { TryOnModal } from '@/components/tryon/TryOnModal';
+import { useCartStore } from '@/stores/cart.store';
 
 interface Props {
   garmentUrl: string;
@@ -16,6 +17,7 @@ interface Props {
 
 export function ProductActions({ garmentUrl, productTitle, productId, sellPrice, storeName, storeSlug }: Props) {
   const [tryOnOpen, setTryOnOpen] = useState(false);
+  const addItem = useCartStore((s) => s.addItem);
 
   return (
     <>
@@ -31,12 +33,50 @@ export function ProductActions({ garmentUrl, productTitle, productId, sellPrice,
 
       {/* Add to Cart */}
       <div className="flex gap-3 pt-2">
-        <button className="flex-1 gradient-cta py-4 rounded-xl font-bold text-lg">
+        <button
+          className="flex-1 gradient-cta py-4 rounded-xl font-bold text-lg"
+          onClick={() =>
+            addItem({
+              id: `${productId}-default`,
+              productId,
+              variantId: 'default',
+              quantity: 1,
+              product: {
+                id: productId,
+                title: productTitle,
+                sellingPrice: sellPrice,
+                currency: 'BDT',
+                mockupUrls: [garmentUrl],
+              },
+              variant: {
+                id: 'default',
+                sku: 'default',
+                additionalPrice: 0,
+              },
+            } as any)
+          }
+        >
           Add to Cart
         </button>
         <button className="w-14 h-14 rounded-xl border-2 border-gray-200 flex items-center justify-center hover:border-rose-400 hover:text-rose-500 text-gray-400 transition-colors text-xl">
           &#9829;
         </button>
+      </div>
+
+      {/* Customize */}
+      <div className="flex gap-3">
+        <Link
+          href={`/dashboard/studio`}
+          className="flex-1 py-3 rounded-xl border-2 border-gray-200 font-bold text-gray-700 hover:bg-gray-50 text-center"
+        >
+          Customize (Studio)
+        </Link>
+        <Link
+          href="/checkout"
+          className="flex-1 py-3 rounded-xl bg-gray-900 text-white font-bold text-center hover:bg-black"
+        >
+          Go to Checkout
+        </Link>
       </div>
 
       {/* Share & earn */}
