@@ -3,7 +3,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { useSupabase } from '@/components/providers/SupabaseProvider';
 
 type Product = {
   id: string;
@@ -69,7 +71,9 @@ async function composeMockup(baseUrl: string, designUrl: string): Promise<Blob> 
 }
 
 export default function StudioPage() {
+  const router = useRouter();
   const supabase = useMemo(() => createClient(), []);
+  const { user, loading: authLoading } = useSupabase();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string>('');
@@ -87,17 +91,16 @@ export default function StudioPage() {
     async function run() {
       setError('');
       setLoading(true);
-
-      const { data: auth } = await supabase.auth.getUser();
-      if (!auth.user) {
-        window.location.href = '/login?redirect=/dashboard/studio';
+      if (authLoading) return;
+      if (!user) {
+        setLoading(false);
         return;
       }
 
       const { data: store, error: storeErr } = await supabase
         .from('stores')
         .select('id')
-        .eq('user_id', auth.user.id)
+        .eq('user_id', user.id)
         .single();
 
       if (storeErr || !store) {
@@ -123,7 +126,7 @@ export default function StudioPage() {
     }
 
     run();
-  }, [supabase]);
+  }, [supabase, user, authLoading]);
 
   async function onPickDesign(file: File | null) {
     setDesignFile(file);
@@ -205,6 +208,31 @@ export default function StudioPage() {
     return <div className="text-gray-500">Loading studio…</div>;
   }
 
+  if (!user) {
+    return (
+      <div className="space-y-4">
+        <h1 className="editorial-headline text-2xl font-extrabold text-gray-900">Design Studio</h1>
+        <p className="text-gray-600">Please sign in to access your seller studio.</p>
+        <div className="flex gap-3">
+          <button
+            className="gradient-cta px-5 py-3 rounded-xl font-bold"
+            onClick={() => {
+              router.push('/login?redirect=/dashboard/studio');
+            }}
+          >
+            Sign In
+          </button>
+          <Link
+            href="/signup"
+            className="px-5 py-3 rounded-xl border border-gray-200 font-bold text-gray-700 hover:bg-gray-50"
+          >
+            Create Account
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4">
@@ -234,6 +262,14 @@ export default function StudioPage() {
           {products.length === 0 ? (
             <div className="text-sm text-gray-500">
               No products yet. Create one first.
+              <div className="mt-3">
+                <Link
+                  href="/dashboard/products/new"
+                  className="inline-flex gradient-cta px-4 py-2 rounded-lg font-bold text-sm"
+                >
+                  Create your first product
+                </Link>
+              </div>
             </div>
           ) : (
             <div className="space-y-2">
