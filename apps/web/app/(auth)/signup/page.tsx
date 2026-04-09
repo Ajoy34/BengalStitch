@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 
-type RoleTab = 'seller' | 'affiliate' | 'buyer';
+type RoleTab = 'seller' | 'affiliate' | 'buyer' | 'studio';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -43,7 +43,7 @@ export default function SignupPage() {
       return;
     }
 
-    router.push('/dashboard');
+    router.push(role === 'studio' ? '/studio' : '/dashboard');
     router.refresh();
   }
 
@@ -51,7 +51,7 @@ export default function SignupPage() {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback?redirect=/dashboard`,
+        redirectTo: `${window.location.origin}/auth/callback?redirect=${role === 'studio' ? '/studio' : '/dashboard'}`,
         queryParams: { access_type: 'offline', prompt: 'consent' },
       },
     });
@@ -70,7 +70,7 @@ export default function SignupPage() {
           </div>
 
           <div className="flex bg-surface-container rounded-xl p-1 gap-1">
-            {(['seller', 'affiliate', 'buyer'] as RoleTab[]).map((tab) => (
+            {(['seller', 'affiliate', 'buyer', 'studio'] as RoleTab[]).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setRole(tab)}
@@ -78,7 +78,7 @@ export default function SignupPage() {
                   role === tab ? 'gradient-cta text-white' : 'text-on-surface-variant hover:text-primary'
                 }`}
               >
-                {tab}
+                {tab === 'studio' ? 'studio user' : tab}
               </button>
             ))}
           </div>
@@ -143,7 +143,7 @@ export default function SignupPage() {
               disabled={loading}
               className="w-full gradient-cta py-3.5 rounded-xl font-bold text-lg disabled:opacity-50"
             >
-              {loading ? 'Creating account...' : role === 'seller' ? 'Create Free Store' : 'Create Account'}
+              {loading ? 'Creating account...' : role === 'seller' ? 'Create Free Store' : role === 'studio' ? 'Create Studio Account' : 'Create Account'}
             </button>
           </form>
 
@@ -181,17 +181,19 @@ export default function SignupPage() {
         <div className="absolute bottom-10 left-10 w-40 h-40 bg-white/10 blob-shape blur-2xl" />
         <div className="relative z-10 text-white text-center max-w-md">
           <div className="text-6xl mb-6">
-            {role === 'seller' ? '🚀' : role === 'affiliate' ? '💰' : '🛍️'}
+            {role === 'seller' ? '🚀' : role === 'affiliate' ? '💰' : role === 'studio' ? '🎨' : '🛍️'}
           </div>
           <h2 className="editorial-headline text-4xl font-extrabold mb-4">
             {role === 'seller' && 'Your brand, your domain, your profit'}
             {role === 'affiliate' && 'Share links, earn commissions'}
             {role === 'buyer' && 'Discover unique Bangladeshi designs'}
+            {role === 'studio' && 'Design your own outfit'}
           </h2>
           <p className="text-white/80 text-lg leading-relaxed">
             {role === 'seller' && 'Set up your storefront on your own .com domain. Customers see your brand — we handle everything behind the scenes.'}
             {role === 'affiliate' && 'Earn 10% commission on every sale you refer. No inventory, no risk. Just share and earn.'}
             {role === 'buyer' && 'Browse thousands of unique custom products from Bangladeshi creators. Virtual try-on, fast delivery, easy payments.'}
+            {role === 'studio' && 'Generate or upload designs, place them on products, and test virtual try-on before ordering.'}
           </p>
           <div className="mt-10 grid grid-cols-3 gap-4">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
