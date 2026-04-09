@@ -1,7 +1,41 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { useState, useRef, useEffect, type ReactNode } from 'react';
+
+/** Nav link to a homepage section: works from any route via /#id; smooth-scrolls when already on /. */
+function HomeSectionNavLink({
+  href,
+  sectionId,
+  className,
+  children,
+  onNavigate,
+}: {
+  href: string;
+  sectionId: string;
+  className: string;
+  children: ReactNode;
+  onNavigate?: () => void;
+}) {
+  const pathname = usePathname();
+  return (
+    <Link
+      href={href}
+      className={className}
+      onClick={(e) => {
+        onNavigate?.();
+        if (pathname === '/') {
+          e.preventDefault();
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          window.history.replaceState(null, '', `/#${sectionId}`);
+        }
+      }}
+    >
+      {children}
+    </Link>
+  );
+}
 
 const PRODUCT_CATEGORIES = [
   {
@@ -42,11 +76,11 @@ const PRODUCT_CATEGORIES = [
 ];
 
 const NAV_LINKS = [
-  { href: '/marketplace', label: 'Products', hasMega: true },
-  { href: '#how-it-works', label: 'How It Works', hasMega: false },
-  { href: '/pricing', label: 'Pricing', hasMega: false },
-  { href: '/blog', label: 'Resources', hasMega: false },
-  { href: '/contact', label: 'Support', hasMega: false },
+  { href: '/marketplace', label: 'Products', hasMega: true as const },
+  { href: '/#how-it-works', label: 'How It Works', hasMega: false as const, homeSectionId: 'how-it-works' as const },
+  { href: '/pricing', label: 'Pricing', hasMega: false as const },
+  { href: '/blog', label: 'Resources', hasMega: false as const },
+  { href: '/contact', label: 'Support', hasMega: false as const },
 ];
 
 export function Header() {
@@ -164,6 +198,15 @@ export function Header() {
                     </div>
                   )}
                 </div>
+              ) : 'homeSectionId' in link && link.homeSectionId ? (
+                <HomeSectionNavLink
+                  key={link.href}
+                  href={link.href}
+                  sectionId={link.homeSectionId}
+                  className="text-gray-700 hover:text-green-600 font-medium text-sm transition-colors px-4 py-2 rounded-lg hover:bg-green-50"
+                >
+                  {link.label}
+                </HomeSectionNavLink>
               ) : (
                 <Link
                   key={link.href}
@@ -205,16 +248,28 @@ export function Header() {
         {menuOpen && (
           <div className="lg:hidden bg-white border-t border-gray-100 p-6 shadow-xl">
             <nav className="flex flex-col gap-1">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-green-50"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) =>
+                'homeSectionId' in link && link.homeSectionId ? (
+                  <HomeSectionNavLink
+                    key={link.href}
+                    href={link.href}
+                    sectionId={link.homeSectionId}
+                    className="text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-green-50"
+                    onNavigate={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </HomeSectionNavLink>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-green-50"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ),
+              )}
               <hr className="border-gray-100 my-2" />
               <Link href="/studio" className="block text-center bg-green-500 text-white py-3 rounded-xl font-bold" onClick={() => setMenuOpen(false)}>
                 Create Custom Products

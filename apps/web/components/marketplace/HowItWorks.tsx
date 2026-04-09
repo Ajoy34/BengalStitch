@@ -38,7 +38,7 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 px-6 md:px-8 bg-gray-50">
+    <section id="how-it-works" className="scroll-mt-36 py-24 px-6 md:px-8 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <span className="text-sm font-bold text-green-600 uppercase tracking-wider">Simple Process</span>

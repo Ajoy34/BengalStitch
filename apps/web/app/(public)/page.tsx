@@ -13,6 +13,7 @@ import { WhyChoose } from '@/components/marketplace/WhyChoose';
 import { GlobalReach } from '@/components/marketplace/GlobalReach';
 import { BlogPreview } from '@/components/marketplace/BlogPreview';
 import { FinalCTA } from '@/components/marketplace/FinalCTA';
+import { HomeScrollToHash } from '@/components/marketplace/HomeScrollToHash';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,6 +21,7 @@ export default function LandingPage() {
   return (
     <>
       <Header />
+      <HomeScrollToHash />
       <main>
         <HeroSection />
         <CategoryBar />

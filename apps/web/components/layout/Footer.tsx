@@ -4,7 +4,7 @@ const FOOTER_SECTIONS = {
   Explore: [
     { href: '/blog', label: 'Blog' },
     { href: '/academy', label: 'Academy' },
-    { href: '#how-it-works', label: 'How It Works' },
+    { href: '/#how-it-works', label: 'How It Works' },
     { href: '/marketplace', label: 'Browse Products' },
   ],
   'Our Solutions': [
