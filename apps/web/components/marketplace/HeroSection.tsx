@@ -40,7 +40,7 @@ export function HeroSection() {
 
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
-                href="/dashboard/studio"
+                href="/studio"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors inline-flex items-center gap-2"
               >
                 Create a Product

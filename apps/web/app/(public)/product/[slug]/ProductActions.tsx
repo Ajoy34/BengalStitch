@@ -66,7 +66,7 @@ export function ProductActions({ garmentUrl, productTitle, productId, sellPrice,
       {/* Customize */}
       <div className="flex gap-3">
         <Link
-          href={`/dashboard/studio`}
+          href="/studio"
           className="flex-1 py-3 rounded-xl border-2 border-gray-200 font-bold text-gray-700 hover:bg-gray-50 text-center"
         >
           Customize (Studio)

@@ -86,7 +86,7 @@ export function Header() {
               Start Your Own Store
             </Link>
             <Link
-              href="/dashboard/studio"
+              href="/studio"
               className="flex items-center gap-2 text-sm font-semibold hover:text-green-400 transition-colors"
             >
               <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -157,7 +157,7 @@ export function Header() {
                         <Link href="/marketplace" className="text-sm font-bold text-green-600 hover:underline">
                           View All Products &rarr;
                         </Link>
-                        <Link href="/dashboard/studio" className="text-sm font-bold bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors">
+                        <Link href="/studio" className="text-sm font-bold bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors">
                           Create a Product
                         </Link>
                       </div>
@@ -182,7 +182,7 @@ export function Header() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
-            <Link href="/dashboard/studio" className="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-lg text-sm font-bold transition-colors">
+            <Link href="/studio" className="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-lg text-sm font-bold transition-colors">
               Create a Product
             </Link>
           </div>
@@ -216,7 +216,7 @@ export function Header() {
                 </Link>
               ))}
               <hr className="border-gray-100 my-2" />
-              <Link href="/dashboard/studio" className="block text-center bg-green-500 text-white py-3 rounded-xl font-bold" onClick={() => setMenuOpen(false)}>
+              <Link href="/studio" className="block text-center bg-green-500 text-white py-3 rounded-xl font-bold" onClick={() => setMenuOpen(false)}>
                 Create Custom Products
               </Link>
               <div className="flex gap-3 pt-2">
